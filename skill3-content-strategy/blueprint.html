@@ -71,7 +71,7 @@
 
       /* Tables: scroll hint + shadow */
       .table-scroll { position:relative; }
-      .table-scroll::after { content:"\2190  geser \2192 "; display:block; text-align:center; font-size:.78rem; color:var(--muted); padding:.3rem 0; }
+      .table-scroll::after { content:"← geser →"; display:block; text-align:center; font-size:.78rem; color:var(--muted); padding:.3rem 0; }
       table { min-width:520px; font-size:.85rem; }
       th,td { padding:.4rem .45rem; }
 
@@ -157,315 +157,444 @@
 <button aria-label="Buka/Tutup Daftar Isi" class="sidebar-toggle" id="sidebarToggle" type="button">&#9776;</button>
 <div class="layout">
 <aside id="sidebar"><h2>Daftar Isi</h2><ul class="toc-list">
-<li><a data-target="konteks" href="#konteks">Konteks</a></li>
-<li><a data-target="4-pilar-konten" href="#4-pilar-konten">4 Pilar Konten</a></li>
-<li><a data-target="threads-strategy" href="#threads-strategy">Threads Strategy</a></li>
-<li><a data-target="content-pyramid-1-insight-5-format" href="#content-pyramid-1-insight-5-format">Content Pyramid — 1 Insight → 5 Format</a></li>
-<li><a data-target="personal-brand-5-pillars-architect-mentor" href="#personal-brand-5-pillars-architect-mentor">Personal Brand 5 Pillars — Architect-Mentor</a></li>
-<li><a data-target="content-calendar-4-minggu" href="#content-calendar-4-minggu">Content Calendar — 4 Minggu</a></li>
-<li><a data-target="email-sequence-nurture-5-email" href="#email-sequence-nurture-5-email">Email Sequence — Nurture 5 Email</a></li>
-<li><a data-target="meta-ads-content-rules" href="#meta-ads-content-rules">Meta Ads Content Rules</a></li>
-<li><a data-target="content-metrics-kpi-mingguan" href="#content-metrics-kpi-mingguan">Content Metrics — KPI Mingguan</a></li>
-<li><a data-target="lampiran-hook-bank-20-hook-diagnosis-led" href="#lampiran-hook-bank-20-hook-diagnosis-led">Lampiran — Hook Bank (20 Hook Diagnosis-Led)</a></li>
+<li><a data-target="tujuan-dokumen" href="#tujuan-dokumen">Tujuan dokumen</a></li>
+<li><a data-target="gambaran-cepat-brand" href="#gambaran-cepat-brand">Gambaran cepat brand</a></li>
+<li><a data-target="outcome-yang-dikejar-selama-90-hari" href="#outcome-yang-dikejar-selama-90-hari">Outcome yang dikejar selama 90 hari</a></li>
+<li><a data-target="prinsip-kerja-konten" href="#prinsip-kerja-konten">Prinsip kerja konten</a></li>
+<li><a data-target="personal-brand-pillars-architect-mentor" href="#personal-brand-pillars-architect-mentor">Personal brand pillars (Architect-Mentor)</a></li>
+<li><a data-target="arsitektur-4-pilar-konten" href="#arsitektur-4-pilar-konten">Arsitektur 4 pilar konten</a></li>
+<li><a data-target="content-pyramid-1-insight-jadi-3-5-format" href="#content-pyramid-1-insight-jadi-3-5-format">Content pyramid: 1 insight jadi 3-5 format</a></li>
+<li><a data-target="format-rules-untuk-threads" href="#format-rules-untuk-threads">Format rules untuk Threads</a></li>
+<li><a data-target="struktur-email-sequence-untuk-nurture" href="#struktur-email-sequence-untuk-nurture">Struktur email sequence untuk nurture</a></li>
+<li><a data-target="aturan-konten-meta-ads-ior" href="#aturan-konten-meta-ads-ior">Aturan konten Meta Ads (IOR)</a></li>
+<li><a data-target="channel-roles-biar-tidak-tumpang-tindih" href="#channel-roles-biar-tidak-tumpang-tindih">Channel roles biar tidak tumpang tindih</a></li>
+<li><a data-target="konten-untuk-awareness-level-audiens" href="#konten-untuk-awareness-level-audiens">Konten untuk awareness level audiens</a></li>
+<li><a data-target="kalender-konten-4-minggu" href="#kalender-konten-4-minggu">Kalender konten 4 minggu</a></li>
+<li><a data-target="roadmap-eksekusi-faseminggu" href="#roadmap-eksekusi-faseminggu">Roadmap eksekusi (FASE/MINGGU)</a></li>
+<li><a data-target="scoreboard-metrik-mingguan" href="#scoreboard-metrik-mingguan">Scoreboard metrik mingguan</a></li>
+<li><a data-target="sop-mingguan-tim-konten" href="#sop-mingguan-tim-konten">SOP mingguan tim konten</a></li>
+<li><a data-target="risk-control-supaya-konten-tidak-melenceng" href="#risk-control-supaya-konten-tidak-melenceng">Risk control supaya konten tidak melenceng</a></li>
+<li><a data-target="lampiran-a-hook-bank-20-hooks-diagnosis-led" href="#lampiran-a-hook-bank-20-hooks-diagnosis-led">Lampiran A — Hook bank (20 hooks, diagnosis-led)</a></li>
+<li><a data-target="lampiran-b-cta-bank-15-cta" href="#lampiran-b-cta-bank-15-cta">Lampiran B — CTA bank (15 CTA)</a></li>
+<li><a data-target="lampiran-c-faq-8-pertanyaan" href="#lampiran-c-faq-8-pertanyaan">Lampiran C — FAQ (8 pertanyaan)</a></li>
+<li><a data-target="penutup" href="#penutup">Penutup</a></li>
+<li><a data-target="power-law-strategi-konten-8020-untuk-andhya-berna" href="#power-law-strategi-konten-8020-untuk-andhya-berna">Power Law: Strategi Konten 80/20 untuk Andhya Berna</a></li>
+<li><a data-target="organic-growth-formula-andhya-berna" href="#organic-growth-formula-andhya-berna">Organic Growth Formula: Andhya Berna</a></li>
+<li><a data-target="organic-monetization-path-andhya-berna" href="#organic-monetization-path-andhya-berna">Organic Monetization Path Andhya Berna</a></li>
+<li><a data-target="5-step-ai-copywriting-workflow-untuk-andhya-berna" href="#5-step-ai-copywriting-workflow-untuk-andhya-berna">5-Step AI Copywriting Workflow untuk Andhya Berna</a></li>
+<li><a data-target="integrasi-cams-framework-dengan-campaign-existing" href="#integrasi-cams-framework-dengan-campaign-existing">Integrasi CAMS Framework dengan Campaign Existing</a></li>
 </ul></aside>
 <main><nav class="back-home"><a href="../index.html">&larr; Back to Home Page</a></nav><article class="ebook-content"><section class="major-section"><h1>Content Strategy &amp; Attention Growth — Andhya Berna</h1>
-<blockquote>
-<p>AI-Powered Marketing Strategist | 22 tahun CMO/CTO | Cepat Digital Teknologi, Jogja</p>
-</blockquote>
-<hr/>
-<h2 id="konteks">Konteks</h2>
-<p>Blueprint ini merancang strategi konten Andhya Berna di Threads, email, dan Meta Ads — dengan pendekatan Architect-Mentor: diagnosis-first, anti-hype, berbasis framework konkret.</p>
-<hr/>
-<h2 id="4-pilar-konten">4 Pilar Konten</h2>
+<h2 id="tujuan-dokumen">Tujuan dokumen</h2>
+<p>Dokumen ini jadi peta eksekusi konten untuk personal brand Andhya Berna. Fokus utamanya: tarik perhatian yang relevan, bangun trust, lalu arahkan audiens ke Boncos Checker dan discovery call. Semua channel dirangkai jadi satu alur yang nyambung: Threads untuk awareness, Email untuk nurture, Meta Ads untuk dorong aksi.</p>
+<h2 id="gambaran-cepat-brand">Gambaran cepat brand</h2>
+<p>Andhya Berna ada di posisi AI-Powered Marketing Strategist. Pengalaman 22 tahun sebagai CMO &amp; CTO jadi pondasi utama. Gaya komunikasi: Architect-Mentor. Artinya tegas saat ngasih diagnosis, hangat saat ngajak eksekusi. Target utama: solo founder dan SMB Indonesia.</p>
+<h2 id="outcome-yang-dikejar-selama-90-hari">Outcome yang dikejar selama 90 hari</h2>
+<p>Reach organik Threads naik stabil tiap bulan. Engagement rate Threads jaga di atas 3,5%. DM atau inquiry rate dari konten tembus 1,8%-3% per minggu. Signup Boncos Checker konsisten naik 20%-30% per bulan. Lead yang lanjut ke call makin fit dengan tier penawaran.</p>
+<h2 id="prinsip-kerja-konten">Prinsip kerja konten</h2>
+<p>Mulai dari diagnosis, bukan motivasi kosong. Satu konten harus punya satu pesan inti. Kalimat pendek lebih kuat daripada paragraf berputar. Pakai angka real, bukan janji besar. Jaga ritme publikasi yang realistis: 2-3 Threads per minggu. Konten harus bantu audiens ambil keputusan kecil hari ini.</p>
+<h2 id="personal-brand-pillars-architect-mentor">Personal brand pillars (Architect-Mentor)</h2>
 <div class="table-scroll"><table>
 <thead><tr>
 <th>Pilar</th>
-<th>Tujuan</th>
-<th>Format Utama</th>
-<th>Frekuensi</th>
+<th>Definisi ringkas</th>
+<th>Bukti di konten</th>
+<th>Dampak ke audiens</th>
 </tr></thead>
 <tbody>
 <tr>
-<td><strong>Diagnosis/Problem</strong></td>
-<td>Bangunkan kesadaran titik bocor</td>
-<td>Threads post, email</td>
-<td>1x/minggu</td>
+<td>Diagnostik tajam</td>
+<td>Cepat lihat titik bocor marketing</td>
+<td>Audit mini di Threads</td>
+<td>Audiens merasa &quot;ini masalah gue&quot;</td>
 </tr>
 <tr>
-<td><strong>Framework/Blueprint</strong></td>
-<td>Tunjukkan metodologi konkret</td>
-<td>Threads thread, email panjang</td>
-<td>1x/minggu</td>
+<td>Framework jelas</td>
+<td>Solusi selalu dibingkai step-by-step</td>
+<td>Carousel kerangka kerja</td>
+<td>Audiens bisa langsung eksekusi</td>
 </tr>
 <tr>
-<td><strong>Case Study/Proof</strong></td>
-<td>Validasi dengan hasil nyata</td>
-<td>Threads post, Meta Ads</td>
-<td>1x/2 minggu</td>
+<td>Bukti lapangan</td>
+<td>Tunjukkan proses dan hasil nyata</td>
+<td>Case snapshot sebelum-sesudah</td>
+<td>Trust naik tanpa hard sell</td>
 </tr>
 <tr>
-<td><strong>Behind-the-Scenes</strong></td>
-<td>Humanisasi AI workflow process</td>
-<td>Threads post, Stories</td>
-<td>1x/2 minggu</td>
+<td>Empati praktis</td>
+<td>Bahasa membumi, no jargon ribet</td>
+<td>Contoh dari situasi UMKM</td>
+<td>Audiens merasa didampingi</td>
+</tr>
+<tr>
+<td>Disiplin eksekusi</td>
+<td>Ada target mingguan, bukan wacana</td>
+<td>Update scoreboard rutin</td>
+<td>Audiens lihat konsistensi</td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>Rasio:</strong> 80% edukasi/value (Pilar 1-2-4), 20% soft offer (Pilar 3 + CTA).</p>
-<hr/>
-<h2 id="threads-strategy">Threads Strategy</h2>
-<p><strong>Aturan format:</strong></p>
+<h2 id="arsitektur-4-pilar-konten">Arsitektur 4 pilar konten</h2>
+<h3 id="pilar-1-diagnosis-problem">Pilar 1 — Diagnosis / Problem</h3>
+<p>Tujuan: bikin audiens sadar masalah yang selama ini dikira normal. Angle utama: leaky bucket, CAC naik, konten ramai tapi inquiry sepi. Format ideal: Threads pendek 200-420 karakter. CTA halus: ajak cek Boncos Checker. Rasio publikasi: 40% dari total konten mingguan. Checklist kualitas pilar diagnosis:</p>
 <ul>
-<li>Maks 499 karakter per post</li>
-<li>Hook di kalimat pertama — diagnosis-led, bukan motivasi</li>
-<li>Ritme paragraf: pendek (1-2 kalimat) → panjang (2-3 kalimat) → pendek (CTA)</li>
-<li>Maks 1-2 emoji per post</li>
-<li>Tanpa hard-selling di post organik</li>
-<li>Frekuensi: 2-3 post/minggu (bukan harian — kualitas &gt; kuantitas)</li>
+<li>Hook langsung nyebut gejala yang terasa di lapangan.</li>
+<li>Ada indikator angka sederhana.</li>
+<li>Ada pertanyaan penutup yang memicu refleksi.</li>
+<li>Tidak menyalahkan audiens.</li>
+<li>Tidak ngedorong jualan di paragraf pertama.</li>
 </ul>
-<p><strong>Struktur post yang bekerja:</strong></p>
-<pre><code>
-[Hook — 1 kalimat diagnosis atau data point]
-
-[Agitate — 1-2 kalimat perjelas masalah]
-
-[Insight — 2-3 kalimat framework atau cara berpikir]
-
-[Soft CTA — 1 kalimat, bukan hard sell]
-</code></pre>
-<hr/>
-<h2 id="content-pyramid-1-insight-5-format">Content Pyramid — 1 Insight → 5 Format</h2>
-<p>Setiap insight besar bisa di-atomisasi:</p>
-<div class="table-scroll"><table>
-<thead><tr>
-<th>Format</th>
-<th>Platform</th>
-<th>Effort</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>Threads post (499 karakter)</td>
-<td>Threads</td>
-<td>15 menit</td>
-</tr>
-<tr>
-<td>Email newsletter (200-400 kata)</td>
-<td>Mailketing</td>
-<td>30 menit</td>
-</tr>
-<tr>
-<td>Carousel 5 slide</td>
-<td>Instagram/Threads</td>
-<td>45 menit</td>
-</tr>
-<tr>
-<td>Short video script (60 detik)</td>
-<td>Reels/TikTok</td>
-<td>60 menit</td>
-</tr>
-<tr>
-<td>Meta Ads copy</td>
-<td>Meta Ads Manager</td>
-<td>20 menit</td>
-</tr>
-</tbody>
-</table></div>
-<p>Satu insight = 5 konten. Bukan buat dari nol 5 kali.</p>
-<hr/>
-<h2 id="personal-brand-5-pillars-architect-mentor">Personal Brand 5 Pillars — Architect-Mentor</h2>
-<div class="table-scroll"><table>
-<thead><tr>
-<th>Pillar</th>
-<th>Manifestasi di Konten</th>
-</tr></thead>
-<tbody>
-<tr>
-<td><strong>Authority</strong></td>
-<td>Referensi 22 tahun pengalaman via case study konkret, bukan klaim kosong</td>
-</tr>
-<tr>
-<td><strong>Specificity</strong></td>
-<td>Selalu sebut angka, nama framework, atau nama klien (dengan izin)</td>
-</tr>
-<tr>
-<td><strong>Anti-hype</strong></td>
-<td>Tidak pernah klaim &quot;ROAS meledak&quot; atau &quot;viral overnight&quot;</td>
-</tr>
-<tr>
-<td><strong>AI as Amplifier</strong></td>
-<td>Tunjukkan AI workflow sebagai tool, bukan magic — Andhya yang interpret</td>
-</tr>
-<tr>
-<td><strong>Blueprint Deliverable</strong></td>
-<td>Setiap konten punya 1 actionable takeaway yang bisa langsung dipakai</td>
-</tr>
-</tbody>
-</table></div>
-<hr/>
-<h2 id="content-calendar-4-minggu">Content Calendar — 4 Minggu</h2>
+<h3 id="pilar-2-framework-blueprint">Pilar 2 — Framework / Blueprint</h3>
+<p>Tujuan: nunjukin cara pikir Andhya dalam menyusun solusi. Angle utama: value ladder, konten pyramid, IOR, arsitektur nurture. Format ideal: Threads edukasi + ringkasan email. CTA halus: ajak simpan post atau reply untuk template. Rasio publikasi: 25% dari total konten mingguan. Checklist kualitas pilar framework:</p>
+<ul>
+<li>Minimal 3 langkah praktis.</li>
+<li>Nama framework konsisten.</li>
+<li>Contoh dipakai dari konteks SMB Indonesia.</li>
+<li>Ada batasan kapan framework dipakai.</li>
+<li>Penutup berisi next action 24 jam.</li>
+</ul>
+<h3 id="pilar-3-case-study-proof">Pilar 3 — Case Study / Proof</h3>
+<p>Tujuan: ubah skeptis jadi penasaran. Angle utama: sebelum-sesudah metrik, keputusan yang diambil, pelajaran yang kepakai lintas niche. Format ideal: Threads cerita + email breakdown 300 kata. CTA halus: ajak balas &quot;audit&quot; untuk diskusi awal. Rasio publikasi: 20% dari total konten mingguan. Checklist kualitas pilar proof:</p>
+<ul>
+<li>Cerita pakai struktur kondisi awal → intervensi → hasil.</li>
+<li>Angka dibuat proporsional dan jujur.</li>
+<li>Jelaskan konteks supaya audiens tidak salah tiru.</li>
+<li>Sorot kesalahan yang pernah terjadi.</li>
+<li>Tegaskan bahwa blueprint perlu adaptasi.</li>
+</ul>
+<h3 id="pilar-4-behind-the-scenes-process">Pilar 4 — Behind-the-Scenes / Process</h3>
+<p>Tujuan: memperlihatkan standar kerja, bukan sekadar hasil. Angle utama: cara riset, cara memilih prioritas, cara review mingguan. Format ideal: Threads ringan + screenshot alur kerja. CTA halus: ajak follow untuk lihat proses berikutnya. Rasio publikasi: 15% dari total konten mingguan. Checklist kualitas pilar process:</p>
+<ul>
+<li>Tunjukkan langkah yang benar-benar dipakai.</li>
+<li>Ada konteks kenapa langkah itu dipilih.</li>
+<li>Hindari kesan pamer tools.</li>
+<li>Buka ruang tanya jawab.</li>
+<li>Akhiri dengan pelajaran inti.</li>
+</ul>
+<h2 id="content-pyramid-1-insight-jadi-3-5-format">Content pyramid: 1 insight jadi 3-5 format</h2>
+<p>Satu insight inti dipakai jadi beberapa turunan. Tujuannya biar produksi ringan tapi pesan tetap konsisten. Contoh alur konten pyramid: Insight inti: &quot;Iklan boncos sering bukan di ads manager, tapi di offer-message fit.&quot; Turunan 1: Threads diagnosis 350 karakter. Turunan 2: Email 280 kata berisi cerita kasus. Turunan 3: Script video 45 detik untuk ads retarget. Turunan 4: Checklist satu halaman untuk lead magnet bonus. Turunan 5: Q&amp;A singkat di Threads comment. Aturan produksi pyramid:</p>
+<ul>
+<li>Insight inti ditulis sekali di Notion master.</li>
+<li>Turunan wajib beda sudut, bukan copy tempel.</li>
+<li>Maksimal 48 jam dari insight ke turunan terakhir.</li>
+<li>Semua turunan pakai CTA yang nyambung ke funnel.</li>
+</ul>
+<h2 id="format-rules-untuk-threads">Format rules untuk Threads</h2>
+<p>Maksimal 499 karakter per post. Hook harus diagnosis-led di 1-2 kalimat awal. Paragraf pendek, 1-2 kalimat per blok. Emoji cukup 0-2, jangan jadi dekorasi utama. Hard sell dihindari pada 80% post. Gunakan kontras: &quot;gejala → akar masalah → langkah pertama&quot;. Template struktur Threads (praktis): Baris 1: gejala yang bikin orang mengangguk. Baris 2: akar masalah yang sering kelewat. Baris 3: langkah pertama yang bisa dikerjakan hari ini. Baris 4: CTA ringan (cek tool, simpan post, atau reply kata kunci). Ritme mingguan Threads: 2 post saat minggu padat klien. 3 post saat minggu normal. Jadwal ideal: Selasa, Kamis, Sabtu. Jam posting awal: 07.00-08.30 atau 19.30-21.00. Review performa tiap Senin pagi 20 menit.</p>
+<h2 id="struktur-email-sequence-untuk-nurture">Struktur email sequence untuk nurture</h2>
+<p>Semua email pakai format plain text. Panjang ideal 200-400 kata. Satu email satu CTA. Nada ngobrol: mentor ke founder, bukan broadcast korporat. Struktur 5 blok per email: Pembuka personal singkat. Masalah spesifik yang lagi kejadian di market. Insight atau framework inti. Contoh penerapan cepat. CTA tunggal yang jelas. Daftar CTA yang dipakai di email: Ajak klik Boncos Checker. Ajak balas email dengan kata kunci. Ajak booking discovery call. Ajak minta template singkat. Ajak pilih tier yang relevan.</p>
+<h2 id="aturan-konten-meta-ads-ior">Aturan konten Meta Ads (IOR)</h2>
+<p>IOR = Interrupt, Own the pain, Redirect. Interrupt: Buka dengan pattern interrupt dari gejala nyata. Contoh: &quot;Biaya iklan naik, lead malah makin dingin?&quot; Durasi hook video: 2-4 detik pertama harus kuat. Own the pain: Akui rasa frustrasi audiens. Sebut akar masalah yang sering luput: offer, landing page, atau follow-up. Pakai 1 data pendukung biar kredibel. Redirect: Arahkan ke langkah ringan dulu. Untuk cold: arahkan ke Boncos Checker. Untuk warm: arahkan ke discovery call form. Untuk hot: arahkan ke halaman aplikasi tier. Guardrail copy Meta Ads:</p>
+<ul>
+<li>Hindari kata bombastis dan janji berlebihan.</li>
+<li>Satu iklan fokus satu problem.</li>
+<li>Visual pakai kontras teks besar + contoh situasi.</li>
+<li>CTA diulang sekali di akhir, tidak berlebihan.</li>
+</ul>
+<h2 id="channel-roles-biar-tidak-tumpang-tindih">Channel roles biar tidak tumpang tindih</h2>
+<p>Threads: buka percakapan dan validasi masalah. Email: dalami logika keputusan dan bangun trust. Meta Ads: dorong aksi terukur sesuai awareness level. Website/landing page: jadi titik konversi dan filter lead.</p>
+<h2 id="konten-untuk-awareness-level-audiens">Konten untuk awareness level audiens</h2>
+<p>Problem-aware: Bahas gejala dan kerugian yang mereka rasakan tiap minggu. Jangan langsung lempar istilah rumit. Solution-aware: Bandingkan pendekatan, tunjukkan kenapa diagnosis dulu lebih aman. Mulai perkenalkan value ladder. Most-aware: Bahas keputusan implementasi, scope kerja, dan ekspektasi timeline. Dorong call hanya untuk lead yang fit.</p>
+<h2 id="kalender-konten-4-minggu">Kalender konten 4 minggu</h2>
 <div class="table-scroll"><table>
 <thead><tr>
 <th>Minggu</th>
-<th>Senin</th>
-<th>Rabu</th>
-<th>Jumat</th>
-<th>Email</th>
+<th>Fokus utama</th>
+<th>Output konten</th>
+<th>Target metrik</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>1</td>
-<td>Diagnosis post (titik bocor)</td>
-<td>Framework post (Value Equation)</td>
-<td>—</td>
-<td>Case study Umrah Family</td>
+<td>Minggu 1</td>
+<td>Validasi angle diagnosis</td>
+<td>3 Threads, 2 Email, 1 Ads test</td>
+<td>ER Threads &gt;3,5%, 120 signup Boncos Checker</td>
 </tr>
 <tr>
-<td>2</td>
-<td>Behind-the-scenes (AI workflow)</td>
-<td>Diagnosis post (CAC vs LTV)</td>
-<td>—</td>
-<td>Framework: 3 funnel leaks</td>
+<td>Minggu 2</td>
+<td>Edukasi framework inti</td>
+<td>2 Threads, 2 Email, 2 Ads variant</td>
+<td>CTR Ads &gt;1,4%, DM rate &gt;1,8%</td>
 </tr>
 <tr>
-<td>3</td>
-<td>Case study post (Bahasakuinggris)</td>
-<td>Framework post (Offer stack)</td>
-<td>—</td>
-<td>Objection handling email</td>
+<td>Minggu 3</td>
+<td>Dorong bukti dan trust</td>
+<td>3 Threads, 1 Email case, 1 retarget ads</td>
+<td>Inquiry naik 20%, show-up lead magnet &gt;35%</td>
 </tr>
 <tr>
-<td>4</td>
-<td>Diagnosis post (leaky bucket)</td>
-<td>Behind-the-scenes (blueprint process)</td>
-<td>—</td>
-<td>Soft offer: Boncos Checker</td>
+<td>Minggu 4</td>
+<td>Konversi ke call terfilter</td>
+<td>2 Threads, 2 Email, 2 retarget ads</td>
+<td>Qualified call booking 18-24 slot</td>
 </tr>
 </tbody>
 </table></div>
-<hr/>
-<h2 id="email-sequence-nurture-5-email">Email Sequence — Nurture 5 Email</h2>
-<p>Untuk lead yang sudah isi Boncos Checker tapi belum booking discovery call:</p>
-<div class="table-scroll"><table>
-<thead><tr>
-<th>Email</th>
-<th>Hari</th>
-<th>Topik</th>
-<th>CTA</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>H+0</td>
-<td>Recap hasil Boncos Checker + apa artinya</td>
-<td>Booking link</td>
-</tr>
-<tr>
-<td>2</td>
-<td>H+3</td>
-<td>Case study relevan (sesuai titik bocor)</td>
-<td>&quot;Apakah ini mirip kondisi Anda?&quot;</td>
-</tr>
-<tr>
-<td>3</td>
-<td>H+7</td>
-<td>Framework: cara fix titik bocor yang ditemukan</td>
-<td>Booking link</td>
-</tr>
-<tr>
-<td>4</td>
-<td>H+12</td>
-<td>Objection handling: &quot;Beda blueprint vs kursus&quot;</td>
-<td>Booking link</td>
-</tr>
-<tr>
-<td>5</td>
-<td>H+18</td>
-<td>Final: &quot;Slot bulan ini hampir penuh&quot;</td>
-<td>Booking link</td>
-</tr>
-</tbody>
-</table></div>
-<hr/>
-<h2 id="meta-ads-content-rules">Meta Ads Content Rules</h2>
-<p>Framework IOR (Iklan Otak Reptil):</p>
-<ol>
-<li><strong>Hook diagnosis-led</strong> — identifikasi masalah spesifik di 3 detik pertama</li>
-<li><strong>Pattern interrupt</strong> — data point atau pertanyaan yang mengejutkan</li>
-<li><strong>Problem agitate</strong> — perjelas dampak kalau tidak diselesaikan</li>
-<li><strong>Solution hint</strong> — tunjukkan ada cara yang lebih baik (tanpa reveal semua)</li>
-<li><strong>CTA spesifik</strong> — satu aksi tunggal (Boncos Checker atau discovery call)</li>
-</ol>
-<p><strong>Larangan di Meta Ads:</strong></p>
-<ul>
-<li>Tidak ada klaim income atau ROAS spesifik</li>
-<li>Tidak ada countdown palsu</li>
-<li>Tidak ada &quot;dijamin&quot; atau &quot;pasti berhasil&quot;</li>
-</ul>
-<hr/>
-<h2 id="content-metrics-kpi-mingguan">Content Metrics — KPI Mingguan</h2>
+<h2 id="roadmap-eksekusi-faseminggu">Roadmap eksekusi (FASE/MINGGU)</h2>
+<h3 id="fase-1-minggu-1-4-bangun-perhatian-yang-tepat">FASE 1 (Minggu 1-4) — Bangun perhatian yang tepat</h3>
+<p>Fokus: validasi pesan diagnosis-led dan kebiasaan publikasi. Prioritas: konsistensi konten, penguatan hook, dan kualitas CTA. Target metrik: ER Threads &gt;3,5%, signup Boncos Checker minimum 450. Keputusan akhir fase: lanjut scale topik yang paling banyak bawa inquiry berkualitas.</p>
+<h3 id="fase-2-minggu-5-8-naikkan-kualitas-lead">FASE 2 (Minggu 5-8) — Naikkan kualitas lead</h3>
+<p>Fokus: perbanyak konten proof dan framework. Prioritas: email nurture, retargeting ads, filter form call. Target metrik: inquiry rate 2,5%-3%, show rate call &gt;70%. Keputusan akhir fase: kunci 3 tema konten pemenang untuk kuartal berikutnya.</p>
+<h2 id="scoreboard-metrik-mingguan">Scoreboard metrik mingguan</h2>
 <div class="table-scroll"><table>
 <thead><tr>
 <th>Metrik</th>
-<th>Target</th>
-<th>Cara Ukur</th>
+<th>Definisi</th>
+<th>Target awal</th>
+<th>Batas waspada</th>
+<th>Aksi kalau turun</th>
 </tr></thead>
 <tbody>
 <tr>
-<td>Threads reach</td>
-<td>5.000-20.000/post</td>
-<td>Threads analytics</td>
+<td>Reach Threads</td>
+<td>Akun unik yang lihat post</td>
+<td>18k/minggu</td>
+<td>&lt;12k</td>
+<td>Perbaiki hook baris pertama</td>
 </tr>
 <tr>
 <td>Engagement rate</td>
-<td>&gt;3%</td>
-<td>Likes + replies &#247; reach</td>
+<td>(Reply+Like+Repost)/Reach</td>
+<td>&gt;3,5%</td>
+<td>&lt;2,5%</td>
+<td>Ubah angle, tambah pertanyaan tajam</td>
 </tr>
 <tr>
-<td>DM/inquiry rate</td>
-<td>5-10 DM/minggu</td>
-<td>Manual count</td>
+<td>DM/Inquiry rate</td>
+<td>DM atau form inquiry dari konten</td>
+<td>1,8%-3%</td>
+<td>&lt;1,2%</td>
+<td>Perjelas CTA dan contoh output</td>
 </tr>
 <tr>
-<td>Boncos Checker signups</td>
-<td>20-50/minggu</td>
-<td>Scalev CRM</td>
+<td>Signup Boncos Checker</td>
+<td>Jumlah lead magnet masuk</td>
+<td>120-180/minggu</td>
+<td>&lt;90</td>
+<td>Tambah post diagnosis + retarget ringan</td>
 </tr>
 <tr>
-<td>Email open rate</td>
-<td>&gt;35%</td>
-<td>Mailketing dashboard</td>
-</tr>
-<tr>
-<td>Discovery call bookings</td>
-<td>5-10/minggu</td>
-<td>Scalev calendar</td>
+<td>Email click rate</td>
+<td>Klik CTA dari email</td>
+<td>3,5%-6%</td>
+<td>&lt;2,5%</td>
+<td>Pendekkan email dan perjelas CTA</td>
 </tr>
 </tbody>
 </table></div>
-<hr/>
-<h2 id="lampiran-hook-bank-20-hook-diagnosis-led">Lampiran — Hook Bank (20 Hook Diagnosis-Led)</h2>
+<h2 id="sop-mingguan-tim-konten">SOP mingguan tim konten</h2>
+<p>Senin: Review data 5 metrik utama. Tentukan 1 insight utama minggu ini. Kunci topik 2-3 Threads. Selasa-Rabu: Produksi konten turunan dari insight utama. Siapkan draft email dan 1 script ads. Kamis: Publish Threads edukasi. Kirim email nurture. Jumat: Publish Threads proof atau process. Jalankan retarget ads update. Sabtu: Publish Threads ringan dengan CTA soft. Rapikan catatan belajar minggu berjalan.</p>
+<h2 id="risk-control-supaya-konten-tidak-melenceng">Risk control supaya konten tidak melenceng</h2>
+<p>Risiko: konten terlalu teknis buat audience awal. Mitigasi: tiap post wajib punya 1 contoh nyata. Risiko: semua topik terasa sama. Mitigasi: pakai matriks 4 pilar dan rotasi angle. Risiko: tim kejar view, lupa kualitas lead. Mitigasi: scoreboard selalu tampilkan inquiry rate dan signup, bukan reach saja. Risiko: beban produksi kebanyakan. Mitigasi: pakai content pyramid dan batasi 2-3 Threads per minggu.</p>
+<h2 id="lampiran-a-hook-bank-20-hooks-diagnosis-led">Lampiran A — Hook bank (20 hooks, diagnosis-led)</h2>
 <ol>
-<li>&quot;Iklan boncos sering bukan salah Meta Ads-nya.&quot;</li>
-<li>&quot;Funnel bocor di 3 tempat. Kebanyakan founder hanya fix 1.&quot;</li>
-<li>&quot;CAC naik bukan berarti harus naikkan budget.&quot;</li>
-<li>&quot;Offer yang lemah tidak bisa diselamatkan oleh copywriting yang bagus.&quot;</li>
-<li>&quot;LTV klien Anda berapa? Kalau tidak tahu, itu masalah pertama.&quot;</li>
-<li>&quot;Revenue stagnan 3 bulan berturut-turut? Itu bukan masalah traffic.&quot;</li>
-<li>&quot;Banyak founder scale ads sebelum fix funnel. Hasilnya: boncos lebih cepat.&quot;</li>
-<li>&quot;Discovery call yang bagus bukan tentang jualan — tapi tentang diagnose.&quot;</li>
-<li>&quot;Blueprint tanpa eksekusi = dokumen. Eksekusi tanpa blueprint = chaos.&quot;</li>
-<li>&quot;22 tahun di industri ini mengajarkan satu hal: diagnose dulu, baru prescribe.&quot;</li>
-<li>&quot;Leaky bucket: kamu isi terus dari atas, tapi bocor di bawah.&quot;</li>
-<li>&quot;Agency mahal sering kasih hasil zonk bukan karena tidak kompeten — tapi karena tidak diagnose dulu.&quot;</li>
-<li>&quot;Kursus online kasih curriculum. Blueprint kasih sistem untuk bisnis Anda.&quot;</li>
-<li>&quot;AI bukan pengganti pengalaman. Tapi AI bisa amplify pengalaman 3-5x lebih cepat.&quot;</li>
-<li>&quot;Retarget tanpa nurture = spam. Nurture tanpa retarget = invisible.&quot;</li>
-<li>&quot;Conversion rate rendah bukan selalu masalah copy. Cek offer-nya dulu.&quot;</li>
-<li>&quot;Scaling tanpa sistem = chaos yang lebih mahal.&quot;</li>
-<li>&quot;Follow-up 1x lalu menyerah = meninggalkan 80% revenue di meja.&quot;</li>
-<li>&quot;Positioning yang lemah membuat semua marketing effort lebih mahal.&quot;</li>
-<li>&quot;Berhenti tebak-tebakan. Mulai dari diagnosis yang konkret.&quot;</li>
-</ol></section></article></main>
+<li>Iklan Anda jalan, tapi tiap minggu rasanya nambal kebocoran yang sama?</li>
+<li>Banyak bisnis nyalahin ads duluan, padahal offer-message fit belum ketemu.</li>
+<li>Kalau leads masuk tapi susah closing, biasanya masalahnya bukan di tim sales.</li>
+<li>Konten ramai belum tentu sehat — coba cek berapa yang jadi inquiry beneran.</li>
+<li>CAC naik itu gejala. Akar masalahnya sering ada di funnel tengah.</li>
+<li>Kalau tiap campaign mulai dari nol, tim capek sebelum hasilnya kelihatan.</li>
+<li>CTA Anda jelas buat tim internal, tapi belum tentu jelas buat calon klien.</li>
+<li>Masalah paling mahal itu bukan iklan gagal, tapi follow-up yang bolong.</li>
+<li>Banyak founder lihat CTR tinggi lalu senang, padahal kualitas lead turun.</li>
+<li>Kalau konten terasa &quot;bagus&quot; tapi sepi DM, biasanya positioning belum nempel.</li>
+<li>Offer bagus bisa kalah kalau narasi problemnya masih terlalu umum.</li>
+<li>Lead magnet gratis bisa bawa lead jelek kalau framing awalnya salah.</li>
+<li>Funnel bocor sering terlihat dari satu angka kecil: show rate call.</li>
+<li>Nambah budget bukan jawaban kalau struktur pesan belum rapi.</li>
+<li>Bukan kurang tools, seringnya kurang urutan keputusan.</li>
+<li>Ada 3 titik rawan boncos: akuisisi, transisi, dan backend.</li>
+<li>Kalau iklan menang di klik tapi kalah di booking, cek halaman aplikasinya.</li>
+<li>Banyak yang kejar closing cepat, padahal trust belum kebentuk.</li>
+<li>Konten edukasi tanpa diagnosis biasanya cuma jadi bacaan lewat.</li>
+<li>Sebelum scale, pastikan fondasi funnel tidak retak.</li>
+</ol>
+<h2 id="lampiran-b-cta-bank-15-cta">Lampiran B — CTA bank (15 CTA)</h2>
+<h3 id="threads">Threads</h3>
+<ol>
+<li>Cek titik bocor funnel kamu lewat Boncos Checker, gratis 3 menit.</li>
+<li>Kalau mau, saya kirim template audit singkat. Reply: AUDIT.</li>
+<li>Simpan post ini, pakai saat review campaign Senin nanti.</li>
+<li>Mau saya bedah contoh funnel kamu? Kirim keyword: FUNNEL.</li>
+<li>Kalau relate, lanjut cek link di bio.</li>
+</ol>
+<h3 id="email">Email</h3>
+<ol>
+<li>Klik ini kalau kamu mau mulai dari diagnosis dulu.</li>
+<li>Balas email ini dengan &quot;cek&quot; — saya kirim format review mingguan.</li>
+<li>Kalau kamu sudah punya tim, isi form ini untuk sesi discovery.</li>
+<li>Lihat contoh blueprint ringkas di halaman ini.</li>
+<li>Pilih tier yang paling pas dari kebutuhanmu hari ini.</li>
+</ol>
+<h3 id="meta-ads">Meta Ads</h3>
+<ol>
+<li>Mulai dari Boncos Checker biar kebocoran utamanya kelihatan.</li>
+<li>Isi form discovery call kalau kamu butuh perbaikan end-to-end.</li>
+<li>Tonton breakdown 2 menit ini sebelum booking call.</li>
+<li>Unduh checklist funnel untuk dipakai bareng tim.</li>
+<li>Lanjut ke halaman aplikasi saat kamu siap dievaluasi.</li>
+</ol>
+<h2 id="lampiran-c-faq-8-pertanyaan">Lampiran C — FAQ (8 pertanyaan)</h2>
+<h3 id="1-kenapa-konten-harus-mulai-dari-diagnosis">1) Kenapa konten harus mulai dari diagnosis?</h3>
+<p>Karena audiens cepat nyambung saat gejala yang mereka alami disebut jelas. Ini bikin konten terasa relevan dari baris pertama. Setelah relevan, baru framework lebih mudah diterima.</p>
+<h3 id="2-kenapa-threads-cukup-2-3-post-per-minggu">2) Kenapa Threads cukup 2-3 post per minggu?</h3>
+<p>Ritme ini realistis buat founder yang juga handle operasional. Kualitas pesan lebih penting daripada posting tiap hari tanpa arah. Dengan ritme ini, review metrik juga lebih rapi.</p>
+<h3 id="3-kenapa-email-tetap-penting-saat-sosial-media-lagi-ramai">3) Kenapa email tetap penting saat sosial media lagi ramai?</h3>
+<p>Email kasih ruang untuk menjelaskan logika keputusan lebih dalam. Hubungan juga terasa lebih personal. Di tahap mid-funnel, email sering jadi jembatan ke booking call.</p>
+<h3 id="4-apa-bedanya-konten-proof-dan-konten-process">4) Apa bedanya konten proof dan konten process?</h3>
+<p>Proof fokus ke hasil dan perubahan yang terjadi. Process fokus ke cara kerja di balik layar. Dua-duanya saling melengkapi untuk bangun trust yang sehat.</p>
+<h3 id="5-kapan-cta-ke-discovery-call-boleh-dipakai">5) Kapan CTA ke discovery call boleh dipakai?</h3>
+<p>Pakai saat audiens sudah lihat diagnosis dan framework dasar. Kalau terlalu cepat, lead cenderung belum siap. Karena itu CTA call lebih pas di konten warm dan retarget.</p>
+<h3 id="6-apa-indikator-konten-mulai-efektif">6) Apa indikator konten mulai efektif?</h3>
+<p>Biasanya dimulai dari DM yang makin spesifik. Lalu signup Boncos Checker naik stabil. Setelah itu inquiry rate dan kualitas call ikut membaik.</p>
+<h3 id="7-gimana-kalau-reach-turun-tapi-inquiry-naik">7) Gimana kalau reach turun tapi inquiry naik?</h3>
+<p>Itu bukan masalah, malah sering jadi tanda pesan makin tepat. Fokus utamamu tetap kualitas lead. Reach bisa dioptimasi lagi setelah narasi inti kuat.</p>
+<h3 id="8-gimana-jaga-gaya-bahasa-tetap-membumi">8) Gimana jaga gaya bahasa tetap membumi?</h3>
+<p>Tulis seperti ngobrol ke founder yang kamu kenal. Buang kata kaku yang bikin kalimat berjarak. Pakai contoh konkret dari situasi harian bisnis.</p>
+<h2 id="penutup">Penutup</h2>
+<p>Konten Andhya Berna bukan lomba ramai-ramai. Konten ini dipakai buat bantu orang melihat masalah, paham rute, lalu berani ambil langkah. Kalau ritme mingguan dijaga, metrik bakal bergerak dengan pola yang sehat. Mulai dari satu insight minggu ini, lalu jalankan content pyramid sampai tuntas.</p>
+<h2 id="power-law-strategi-konten-8020-untuk-andhya-berna">Power Law: Strategi Konten 80/20 untuk Andhya Berna</h2>
+<p>Power Law bikin tim fokus ke output yang gerak cepat dan hasil yang bisa diukur. Di niche B2B high-ticket, tidak semua post harus sempurna. Yang penting ritme jalan, insight tajam, dan pemenang cepat dikenali.</p>
+<h3 id="distribusi-konten-8020">Distribusi Konten 80/20</h3>
+<ul>
+<li>80% post = Good Enough. Fokus pada kejelasan, bukan produksi berlebihan.</li>
+<li>Format 80%: daily AI tips, snippet framework marketing, quick case study, opini tajam, dan review tools.</li>
+<li>20% post = Power Law Bets. Format ini wajib bawa proof dan sudut pandang kuat.</li>
+<li>Format 20%: deep case study pakai angka real, controversial take soal AI marketing, analisis data, long-form thread dengan bukti.</li>
+<li>Tujuan 80% adalah menjaga volume dan sinyal pasar.</li>
+<li>Tujuan 20% adalah mencari breakout content yang dorong leads berkualitas.</li>
+</ul>
+<h3 id="volume-math-untuk-niche-b2b-high-ticket">Volume Math untuk Niche B2B High-Ticket</h3>
+<ul>
+<li>Target mingguan: 10 post text.</li>
+<li>Komposisi: 8 post Good Enough + 2 post Power Law Bets.</li>
+<li>Asumsi konservatif: 1 dari 10 post memberi sinyal kuat.</li>
+<li>Dalam 1 bulan, 40 post memberi 4 kandidat pemenang.</li>
+<li>Dari 4 kandidat, biasanya 1-2 bisa jadi aset konten jangka panjang.</li>
+<li>Ini realistis untuk pasar dengan ticket Rp4.5-35jt yang butuh trust tinggi.</li>
+</ul>
+<h3 id="saat-ketemu-hit-langsung-double-down">Saat Ketemu Hit, Langsung Double Down</h3>
+<ul>
+<li>Ubah post pemenang jadi artikel panjang.</li>
+<li>Konversi jadi lead magnet yang relevan dengan problem audiens.</li>
+<li>Pecah insight utama jadi modul course.</li>
+<li>Naikkan jadi paid workshop dengan studi kasus yang sama.</li>
+<li>Jalankan loop ini dalam 7 hari agar momentum tidak hilang.</li>
+</ul>
+<h3 id="eksekusi-praktis-mingguan">Eksekusi Praktis Mingguan</h3>
+<ul>
+<li>Batch 15-20 quick post dalam 1 jam.</li>
+<li>Jadwalkan sebaran konten untuk 7 hari.</li>
+<li>Jadikan Threads dan LinkedIn sebagai platform teks utama.</li>
+<li>Simpan bank ide dari komentar, DM, dan call notes.</li>
+<li>Review performa mingguan. Ulang topik yang sudah terbukti menarik.</li>
+</ul>
+<h2 id="organic-growth-formula-andhya-berna">Organic Growth Formula: Andhya Berna</h2>
+<p>Pertumbuhan organik untuk brand personal high-ticket butuh frekuensi, sudut pandang, dan distribusi disiplin. Fokus utamanya bukan viral sesaat, tapi inbound yang makin relevan.</p>
+<h3 id="formula-inti-pertumbuhan-organik">Formula Inti Pertumbuhan Organik</h3>
+<ul>
+<li>Threads + LinkedIn: 7-14 post per minggu.</li>
+<li>Komposisi format: 80% text, 20% visual.</li>
+<li>Komentar di akun besar niche AI, marketing, dan business sebanyak 20x per hari.</li>
+<li>Isi komentar harus kasih insight yang data-driven, bukan pujian kosong.</li>
+<li>Hindari hard sell produk. Dorong trust lewat framework, case study, dan contrarian takes.</li>
+<li>Pola konversi terbaik sering muncul di post ke-3 atau ke-4, bukan post terakhir.</li>
+<li>Duplikasi konten yang perform ke platform lain dengan adaptasi konteks.</li>
+</ul>
+<h3 id="kenapa-threads-jadi-mesin-distribusi">Kenapa Threads Jadi Mesin Distribusi</h3>
+<ul>
+<li>Threads cocok untuk model 10 -&gt; 100 -&gt; 1000 karena feedback loop cepat.</li>
+<li>Format text-first pas untuk share framework dan breakdown taktik.</li>
+<li>Konten pendek bisa diuji cepat sebelum diangkat ke format panjang.</li>
+<li>Ini menekan biaya eksperimen konten sambil jaga kualitas insight.</li>
+</ul>
+<h3 id="jadwal-eksekusi">Jadwal Eksekusi</h3>
+<ul>
+<li>Produksi konten secara batch di awal minggu.</li>
+<li>Pakai variasi jam posting untuk baca pola audiens.</li>
+<li>Simpan 2-3 post cadangan untuk momentum topik yang lagi naik.</li>
+<li>Evaluasi tiap pekan: reach, saves, DM intent, dan klik ke funnel.</li>
+</ul>
+<h2 id="organic-monetization-path-andhya-berna">Organic Monetization Path Andhya Berna</h2>
+<p>Konten organik berfungsi sebagai mesin trust. Trust ini yang membuat pricing Rp4.5-35jt terasa masuk akal di mata market.</p>
+<h3 id="jalur-monetisasi-utama">Jalur Monetisasi Utama</h3>
+<ul>
+<li>Primary: own products dari Boncos Checker sampai tier high-ticket.</li>
+<li>Urutan ladder: Boncos Checker (free) -&gt; CLARK -&gt; Skills -&gt; Blueprint -&gt; Bundle -&gt; Complete.</li>
+<li>Funnel konten: free value -&gt; Boncos Checker -&gt; CLARK -&gt; ascending tiers.</li>
+<li>Konten edukasi menunjukkan kedalaman metode, bukan sekadar janji.</li>
+<li>Ini menarik klien yang siap eksekusi, bukan sekadar cari inspirasi.</li>
+</ul>
+<h3 id="jalur-monetisasi-tambahan">Jalur Monetisasi Tambahan</h3>
+<ul>
+<li>Affiliate untuk AI tools, marketing platforms, dan SaaS yang relevan.</li>
+<li>Platform monetization lewat YouTube tutorial AI marketing.</li>
+<li>Semua channel tetap mengarah ke authority brand dan product ladder.</li>
+</ul>
+<h3 id="prinsip-monetisasi-organik">Prinsip Monetisasi Organik</h3>
+<ul>
+<li>Jual diagnosis dan keputusan, bukan tips acak.</li>
+<li>Tunjukkan proof kecil secara konsisten agar risiko beli terasa turun.</li>
+<li>Setiap konten harus punya peran: attract, nurture, atau convert.</li>
+<li>Saat authority naik, conversion call cenderung lebih efisien.</li>
+</ul>
+<h2 id="5-step-ai-copywriting-workflow-untuk-andhya-berna">5-Step AI Copywriting Workflow untuk Andhya Berna</h2>
+<p>Workflow ini cocok untuk niche AI marketing yang kompetitif. Kerangka ini juga jadi demo nyata dari kualitas berpikir Andhya Berna.</p>
+<h3 id="step-1-riset-psikologis-target">Step 1 - Riset Psikologis Target</h3>
+<ul>
+<li>Ambil bahasa asli market dari forum marketing.</li>
+<li>Pantau FB groups digital marketing Indonesia.</li>
+<li>Ambil pola friksi dari IG comments.</li>
+<li>Gunakan insight dari Scalev community.</li>
+<li>Catat: pain points, desire, objection, dan trigger keputusan.</li>
+</ul>
+<h3 id="step-2-stop-jangan-langsung-nulis">Step 2 - STOP, Jangan Langsung Nulis</h3>
+<ul>
+<li>Jangan buru-buru draft sebelum peta pesan jelas.</li>
+<li>Diam sebentar untuk pilih angle paling kuat.</li>
+<li>Pastikan satu konten hanya bawa satu ide inti.</li>
+</ul>
+<h3 id="step-3-pelajari-kompetitor">Step 3 - Pelajari Kompetitor</h3>
+<ul>
+<li>Audit AI marketing consultants di niche serupa.</li>
+<li>Bedah creator course marketing yang kuat di organik.</li>
+<li>Cek SaaS founders yang konsisten bangun thought leadership.</li>
+<li>Fokus lihat gap yang belum mereka jawab dengan tuntas.</li>
+</ul>
+<h3 id="step-4-bedah-copy-kompetitor-pakai-ai">Step 4 - Bedah Copy Kompetitor Pakai AI</h3>
+<ul>
+<li>Temukan recurring keywords yang sering dipakai.</li>
+<li>Petakan emotional hooks yang paling sering muncul.</li>
+<li>Lihat pola positioning yang dipakai untuk rebut trust.</li>
+<li>Pilih pola yang relevan lalu upgrade dengan data dan proof.</li>
+</ul>
+<h3 id="step-5-draft-dengan-full-context">Step 5 - Draft dengan Full Context</h3>
+<ul>
+<li>Tulis dengan tone semi-formal, data-driven, no-BS.</li>
+<li>Gunakan kalimat pendek dan aktif.</li>
+<li>Buka dengan problem nyata, tutup dengan next step jelas.</li>
+<li>Sisipkan proof agar argumen tidak terasa kosong.</li>
+</ul>
+<h3 id="meta">Meta</h3>
+<p>Andhya Berna memang menjual skill AI marketing. Karena itu, workflow copywriting ini sekaligus berfungsi sebagai demo produk live. Market tidak cuma dengar klaim. Market lihat proses berpikirnya langsung.</p>
+<h2 id="integrasi-cams-framework-dengan-campaign-existing">Integrasi CAMS Framework dengan Campaign Existing</h2>
+<p>Bagian ini menghubungkan konten organik dengan campaign yang sudah berjalan. Tujuannya agar setiap konten punya kontribusi langsung ke pipeline.</p>
+<h3 id="integrasi-ke-campaign-aktif">Integrasi ke Campaign Aktif</h3>
+<ul>
+<li>Power Law bets yang menang langsung di-feed ke Meta Ads untuk CLARK dan Skills products.</li>
+<li>Organic growth dipakai buat naikkan authority yang menopang harga high-ticket.</li>
+<li>AI Copywriting Workflow dijalankan sebagai live demo kapabilitas CLARK.</li>
+<li>Threads dijadikan channel organik utama untuk menjangkau marketers dan founders.</li>
+<li>Konten diarahkan ke Boncos Checker sebagai entry funnel lalu naik ke product ladder.</li>
+</ul>
+<h3 id="rute-operasional-sederhana">Rute Operasional Sederhana</h3>
+<ul>
+<li>Uji cepat di organik dulu.</li>
+<li>Ambil pemenang berbasis metrik intent.</li>
+<li>Scale pemenang ke paid distribution.</li>
+<li>Sambungkan ke offer yang paling cocok dengan level awareness audiens.</li>
+<li>Ulang loop tiap minggu agar performa tumbuh stabil.</li>
+</ul></section></article></main>
 </div>
 <button aria-label="Kembali ke atas" class="back-to-top" id="backToTop" type="button">&#8593;</button>
 <script>
