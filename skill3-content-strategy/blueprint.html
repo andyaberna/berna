@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Content Strategy &amp; Attention Growth — Andhya Berna</title>
+<style>
+    :root { --bg:#fff; --text:#1f2937; --heading:#1a365d; --accent:#d69e2e; --danger:#e53e3e; --line:#e5e7eb; --muted:#64748b; --soft:#f8fafc; --bridge:#f0f4f8; --lesson:#fffbeb; --whatif:#f5f0ff; }
+    * { box-sizing:border-box; } html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:"Segoe UI", system-ui, -apple-system, sans-serif; line-height:1.65; }
+    h1,h2,h3,h4,h5 { font-family:Georgia, "Times New Roman", serif; color:var(--heading); line-height:1.3; scroll-margin-top:80px; }
+    .cover { min-height:100vh; display:grid; place-items:center; text-align:center; padding:2rem; border-bottom:1px solid var(--line); }
+    .cover h1 { font-size:clamp(2rem,4vw,3.3rem); margin:.25rem 0; }
+    .cover .subtitle { color:var(--heading); font-size:1.1rem; } .cover .meta { color:var(--muted); margin-top:1rem; }
+    .layout { display:flex; }
+    .sidebar-toggle { display:none; position:fixed; top:12px; left:12px; z-index:1200; border:1px solid var(--line); background:white; border-radius:8px; padding:.45rem .65rem; }
+    aside { position:sticky; top:0; align-self:flex-start; width:310px; max-height:100vh; overflow:auto; border-right:1px solid var(--line); background:#fff; padding:1rem; }
+    .toc-list,.toc-list ul { list-style:none; margin:0; padding-left:.8rem; } .toc-list>li { margin:.24rem 0; }
+    .toc-list a { text-decoration:none; color:#334155; font-size:.92rem; display:block; padding:.16rem .4rem; border-left:2px solid transparent; border-radius:4px; }
+    .toc-list a.active { color:var(--heading); border-left-color:var(--accent); background:#f8fafc; font-weight:600; }
+    main { flex:1; padding:1.2rem clamp(1rem,3vw,2.5rem) 3rem; } .ebook-content { max-width:980px; margin:auto; }
+    .major-section { padding:1rem 0; border-bottom:1px solid var(--line); } .section-alt { background:var(--soft); padding:1.1rem; border-radius:10px; border:1px solid #edf2f7; }
+    .table-scroll { overflow-x:auto; margin:1rem 0; } table { width:100%; border-collapse:collapse; min-width:640px; background:#fff; }
+    th,td { border:1px solid #dbe1e8; padding:.58rem .6rem; vertical-align:top; } th { background:#f8fafc; font-weight:700; }
+    .scorecard-table th::after { content:" ⇅"; color:#94a3b8; font-size:.78em; } .scorecard-table tbody tr:nth-child(even) { background:#fcfdff; }
+    .status-green { background:#e6ffed; } .status-yellow { background:#fffbea; } .status-red { background:#ffe8e8; } .status-gray { background:#f3f4f6; }
+    .warning-marker { color:var(--danger); font-weight:700; font-size:1.12em; } .controversial-heading { border-left:4px solid var(--danger); padding-left:.55rem; }
+    blockquote { margin:1rem 0; border-left:4px solid #cbd5e1; padding:.6rem .85rem; background:#f8fafc; }
+    .archetype-box { display:flex; flex-wrap:wrap; align-items:center; gap:.45rem; margin:.8rem 0 1rem; } .archetype-label { font-weight:700; color:#475569; }
+    .archetype-pill { background:#ebf4ff; border:1px solid #bfdbfe; color:#1e40af; padding:.22rem .55rem; border-radius:999px; font-size:.86rem; }
+    .lesson-box { background:var(--lesson); border-left:4px solid var(--accent); padding:.7rem .8rem; margin:.9rem 0 1.1rem; font-size:.95rem; } .lesson-title { margin:.2rem 0 .45rem; font-weight:700; }
+    .narrative-bridge { background:var(--bridge); border:1px solid #d7e0ea; border-radius:10px; padding:.75rem .9rem; margin:1rem 0; } .narrative-bridge p { font-style:italic; color:#334155; }
+    .timeline-scroll { overflow-x:auto; padding-bottom:.5rem; margin:.9rem 0 1.2rem; } .timeline-track { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(180px,1fr); gap:.65rem; min-width:max-content; }
+    .timeline-col { border:1px solid #dbe4ee; border-radius:10px; background:#fff; padding:.55rem; } .timeline-year { font-weight:700; color:var(--heading); border-bottom:1px solid #e2e8f0; padding-bottom:.35rem; margin-bottom:.45rem; }
+    .timeline-event { font-size:.9rem; padding:.42rem .5rem; border-radius:7px; margin:.36rem 0; border:1px solid transparent; } .timeline-event.positive { background:#ecfdf3; border-color:#b7efcc; } .timeline-event.negative { background:#fff1f1; border-color:#f6c2c2; }
+    .pattern-chain { display:flex; flex-direction:column; gap:.4rem; margin:1rem 0 1.2rem; } .chain-card { border:1px solid #dbe4ee; border-radius:9px; background:#fff; padding:.6rem .7rem; } .chain-arrow { text-align:center; color:#64748b; font-size:1.2rem; }
+    .juxtaposition-wrap { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.8rem; margin:.75rem 0 1rem; } .juxta-card { border-radius:10px; border:1px solid #e2e8f0; padding:.65rem .75rem; }
+    .juxta-card.positive { background:#f0fff4; border-color:#bbf7d0; } .juxta-card.positive h5 { color:#166534; } .juxta-card.negative { background:#fff1f2; border-color:#fecdd3; } .juxta-card.negative h5 { color:#991b1b; }
+    .whatif-card { background:var(--whatif); border-left:4px solid #7c3aed; padding:.65rem .8rem; border-radius:8px; margin:.6rem 0; }
+    .checklist-table tbody tr td:first-child { font-weight:700; text-align:center; width:48px; } .fake-checkbox { display:inline-block; border:1px solid #cbd5e1; border-radius:6px; padding:.14rem .38rem; background:#fff; font-family:ui-monospace,monospace; }
+    .retro-score-table td:nth-child(2) { font-weight:700; text-align:center; } .score-safe { background:#ecfdf3; color:#166534; } .score-low { background:#fffbea; color:#92400e; } .score-mid { background:#fff7ed; color:#9a3412; } .score-high { background:#fee2e2; color:#991b1b; }
+    .back-to-top { position:fixed; right:16px; bottom:18px; border:none; background:var(--heading); color:#fff; width:42px; height:42px; border-radius:999px; cursor:pointer; opacity:0; transform:translateY(8px); transition:.2s; } .back-to-top.show { opacity:1; transform:translateY(0); }
+    /* --- Overlay backdrop --- */
+    .sidebar-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:1050; opacity:0; transition:opacity .24s; }
+    .sidebar-overlay.show { display:block; opacity:1; }
+
+    /* --- Reading progress bar --- */
+    .reading-progress { position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,var(--accent),#f59e0b); z-index:1300; width:0; transition:width .12s linear; }
+
+    /* --- Accordion for mobile profiles --- */
+    .profile-collapse-btn { display:none; }
+
+    /* ===== TABLET: ≤1024px ===== */
+    @media (max-width:1024px) {
+      .sidebar-toggle { display:block; }
+      aside { position:fixed; top:0; left:0; transform:translateX(-105%); transition:.24s; z-index:1100; width:min(82vw,320px); box-shadow:0 10px 30px rgba(2,6,23,.18); }
+      aside.open { transform:translateX(0); }
+      main { padding-top:3.8rem; }
+      .juxtaposition-wrap { grid-template-columns:1fr; }
+      .toc-list a { padding:.4rem .5rem; min-height:36px; display:flex; align-items:center; }
+    }
+
+    /* ===== MOBILE: ≤768px ===== */
+    @media (max-width:768px) {
+      body { font-size:15px; line-height:1.7; -webkit-text-size-adjust:100%; }
+      h1 { font-size:1.6rem; } h2 { font-size:1.35rem; scroll-margin-top:56px; } h3 { font-size:1.15rem; scroll-margin-top:56px; } h4 { font-size:1.05rem; }
+      main { padding:3.2rem .75rem 4rem; }
+      .cover { min-height:80vh; padding:1.5rem 1rem; }
+      .cover h1 { font-size:1.6rem; }
+      .cover .subtitle { font-size:.95rem; }
+
+      /* Tables: scroll hint + shadow */
+      .table-scroll { position:relative; }
+      .table-scroll::after { content:"\2190  geser \2192 "; display:block; text-align:center; font-size:.78rem; color:var(--muted); padding:.3rem 0; }
+      table { min-width:520px; font-size:.85rem; }
+      th,td { padding:.4rem .45rem; }
+
+      /* TOC touch targets */
+      .toc-list a { padding:.5rem .55rem; min-height:44px; font-size:.95rem; border-radius:6px; }
+      .toc-list>li { margin:.12rem 0; }
+
+      /* Sidebar wider on mobile */
+      aside { width:min(88vw,340px); padding:.8rem .6rem; }
+
+      /* Lesson box, bridge, whatif — full width */
+      .lesson-box, .narrative-bridge, .whatif-card { padding:.6rem .65rem; font-size:.9rem; }
+      blockquote { padding:.5rem .65rem; font-size:.93rem; }
+
+      /* Timeline: smaller columns */
+      .timeline-track { grid-auto-columns:minmax(150px,1fr); }
+      .timeline-event { font-size:.82rem; padding:.35rem .4rem; }
+
+      /* Pattern chain */
+      .chain-card { padding:.5rem .55rem; font-size:.9rem; }
+
+      /* Archetype pills */
+      .archetype-pill { font-size:.8rem; padding:.18rem .45rem; }
+
+      /* Back to top: larger touch target */
+      .back-to-top { width:48px; height:48px; font-size:1.2rem; right:12px; bottom:14px; }
+
+      /* Hamburger: larger */
+      .sidebar-toggle { padding:.55rem .75rem; font-size:1.15rem; top:8px; left:8px; }
+
+      /* Profile accordion */
+      .profile-collapse-btn { display:inline-block; background:none; border:1px solid var(--line); border-radius:6px; padding:.3rem .6rem; font-size:.82rem; color:var(--muted); cursor:pointer; margin-left:.5rem; vertical-align:middle; }
+      .profile-body.collapsed { display:none; }
+
+      /* Juxtaposition cards stacked */
+      .juxta-card { padding:.55rem .6rem; font-size:.9rem; }
+
+      /* Checklist table */
+      .checklist-table { min-width:400px; }
+
+      /* Scorecard table */
+      .scorecard-table { min-width:700px; font-size:.8rem; }
+    }
+
+    /* ===== SMALL PHONE: ≤480px ===== */
+    @media (max-width:480px) {
+      body { font-size:14px; }
+      h1 { font-size:1.4rem; } h2 { font-size:1.2rem; } h3 { font-size:1.08rem; }
+      main { padding:3rem .5rem 4rem; }
+      .cover { min-height:70vh; padding:1.2rem .8rem; }
+      .cover h1 { font-size:1.35rem; }
+      .cover .subtitle { font-size:.88rem; }
+      .section-alt { padding:.7rem; border-radius:8px; }
+      .lesson-box, .narrative-bridge, .whatif-card { margin:.6rem -.15rem; border-radius:6px; }
+      table { min-width:440px; font-size:.78rem; }
+      th,td { padding:.32rem .35rem; }
+      .timeline-track { grid-auto-columns:minmax(130px,1fr); gap:.45rem; }
+      .archetype-box { gap:.3rem; }
+      .archetype-pill { font-size:.75rem; }
+      aside { width:min(92vw,300px); }
+      .toc-list a { font-size:.9rem; }
+    }
+
+    /* ===== PRINT ===== */
+    @media print { @page { margin:2cm; } .sidebar-toggle,aside,.back-to-top,.reading-progress,.sidebar-overlay,.profile-collapse-btn { display:none !important; } main { padding:0; } .major-section,.section-alt { break-inside:avoid; page-break-inside:avoid; border:none; background:#fff; } h2 { break-before:page; page-break-before:always; } a { color:#000; text-decoration:none; } .profile-body.collapsed { display:block !important; } }
+  
+.back-home { padding:.8rem 1.5rem .2rem; }
+.back-home a { display:inline-flex; align-items:center; gap:.4rem; color:#4a5568; text-decoration:none; font-size:.9rem; font-weight:500; padding:.4rem .8rem; border-radius:6px; border:1px solid #e2e8f0; background:#fff; transition:all .15s; }
+.back-home a:hover { color:#1a365d; border-color:#1a365d; background:#f7fafc; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+@media(max-width:600px) { .back-home { padding:.6rem 1rem .2rem; } .back-home a { font-size:.82rem; } }
+</style>
+</head>
+<body>
+<header class="cover">
+<div>
+<h1>Content Strategy &amp; Attention Growth — Andhya Berna</h1>
+<p class="subtitle">Dokumen Blueprint</p>
+<p class="meta">Regenerasi HTML &#8226; 29 April 2026</p>
+</div>
+</header>
+<div class="reading-progress" id="readingProgress"></div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<button aria-label="Buka/Tutup Daftar Isi" class="sidebar-toggle" id="sidebarToggle" type="button">&#9776;</button>
+<div class="layout">
+<aside id="sidebar"><h2>Daftar Isi</h2><ul class="toc-list">
+<li><a data-target="konteks" href="#konteks">Konteks</a></li>
+<li><a data-target="4-pilar-konten" href="#4-pilar-konten">4 Pilar Konten</a></li>
+<li><a data-target="threads-strategy" href="#threads-strategy">Threads Strategy</a></li>
+<li><a data-target="content-pyramid-1-insight-5-format" href="#content-pyramid-1-insight-5-format">Content Pyramid — 1 Insight → 5 Format</a></li>
+<li><a data-target="personal-brand-5-pillars-architect-mentor" href="#personal-brand-5-pillars-architect-mentor">Personal Brand 5 Pillars — Architect-Mentor</a></li>
+<li><a data-target="content-calendar-4-minggu" href="#content-calendar-4-minggu">Content Calendar — 4 Minggu</a></li>
+<li><a data-target="email-sequence-nurture-5-email" href="#email-sequence-nurture-5-email">Email Sequence — Nurture 5 Email</a></li>
+<li><a data-target="meta-ads-content-rules" href="#meta-ads-content-rules">Meta Ads Content Rules</a></li>
+<li><a data-target="content-metrics-kpi-mingguan" href="#content-metrics-kpi-mingguan">Content Metrics — KPI Mingguan</a></li>
+<li><a data-target="lampiran-hook-bank-20-hook-diagnosis-led" href="#lampiran-hook-bank-20-hook-diagnosis-led">Lampiran — Hook Bank (20 Hook Diagnosis-Led)</a></li>
+</ul></aside>
+<main><nav class="back-home"><a href="../index.html">&larr; Back to Home Page</a></nav><article class="ebook-content"><section class="major-section"><h1>Content Strategy &amp; Attention Growth — Andhya Berna</h1>
+<blockquote>
+<p>AI-Powered Marketing Strategist | 22 tahun CMO/CTO | Cepat Digital Teknologi, Jogja</p>
+</blockquote>
+<hr/>
+<h2 id="konteks">Konteks</h2>
+<p>Blueprint ini merancang strategi konten Andhya Berna di Threads, email, dan Meta Ads — dengan pendekatan Architect-Mentor: diagnosis-first, anti-hype, berbasis framework konkret.</p>
+<hr/>
+<h2 id="4-pilar-konten">4 Pilar Konten</h2>
+<div class="table-scroll"><table>
+<thead><tr>
+<th>Pilar</th>
+<th>Tujuan</th>
+<th>Format Utama</th>
+<th>Frekuensi</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>Diagnosis/Problem</strong></td>
+<td>Bangunkan kesadaran titik bocor</td>
+<td>Threads post, email</td>
+<td>1x/minggu</td>
+</tr>
+<tr>
+<td><strong>Framework/Blueprint</strong></td>
+<td>Tunjukkan metodologi konkret</td>
+<td>Threads thread, email panjang</td>
+<td>1x/minggu</td>
+</tr>
+<tr>
+<td><strong>Case Study/Proof</strong></td>
+<td>Validasi dengan hasil nyata</td>
+<td>Threads post, Meta Ads</td>
+<td>1x/2 minggu</td>
+</tr>
+<tr>
+<td><strong>Behind-the-Scenes</strong></td>
+<td>Humanisasi AI workflow process</td>
+<td>Threads post, Stories</td>
+<td>1x/2 minggu</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Rasio:</strong> 80% edukasi/value (Pilar 1-2-4), 20% soft offer (Pilar 3 + CTA).</p>
+<hr/>
+<h2 id="threads-strategy">Threads Strategy</h2>
+<p><strong>Aturan format:</strong></p>
+<ul>
+<li>Maks 499 karakter per post</li>
+<li>Hook di kalimat pertama — diagnosis-led, bukan motivasi</li>
+<li>Ritme paragraf: pendek (1-2 kalimat) → panjang (2-3 kalimat) → pendek (CTA)</li>
+<li>Maks 1-2 emoji per post</li>
+<li>Tanpa hard-selling di post organik</li>
+<li>Frekuensi: 2-3 post/minggu (bukan harian — kualitas &gt; kuantitas)</li>
+</ul>
+<p><strong>Struktur post yang bekerja:</strong></p>
+<pre><code>
+[Hook — 1 kalimat diagnosis atau data point]
+
+[Agitate — 1-2 kalimat perjelas masalah]
+
+[Insight — 2-3 kalimat framework atau cara berpikir]
+
+[Soft CTA — 1 kalimat, bukan hard sell]
+</code></pre>
+<hr/>
+<h2 id="content-pyramid-1-insight-5-format">Content Pyramid — 1 Insight → 5 Format</h2>
+<p>Setiap insight besar bisa di-atomisasi:</p>
+<div class="table-scroll"><table>
+<thead><tr>
+<th>Format</th>
+<th>Platform</th>
+<th>Effort</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Threads post (499 karakter)</td>
+<td>Threads</td>
+<td>15 menit</td>
+</tr>
+<tr>
+<td>Email newsletter (200-400 kata)</td>
+<td>Mailketing</td>
+<td>30 menit</td>
+</tr>
+<tr>
+<td>Carousel 5 slide</td>
+<td>Instagram/Threads</td>
+<td>45 menit</td>
+</tr>
+<tr>
+<td>Short video script (60 detik)</td>
+<td>Reels/TikTok</td>
+<td>60 menit</td>
+</tr>
+<tr>
+<td>Meta Ads copy</td>
+<td>Meta Ads Manager</td>
+<td>20 menit</td>
+</tr>
+</tbody>
+</table></div>
+<p>Satu insight = 5 konten. Bukan buat dari nol 5 kali.</p>
+<hr/>
+<h2 id="personal-brand-5-pillars-architect-mentor">Personal Brand 5 Pillars — Architect-Mentor</h2>
+<div class="table-scroll"><table>
+<thead><tr>
+<th>Pillar</th>
+<th>Manifestasi di Konten</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>Authority</strong></td>
+<td>Referensi 22 tahun pengalaman via case study konkret, bukan klaim kosong</td>
+</tr>
+<tr>
+<td><strong>Specificity</strong></td>
+<td>Selalu sebut angka, nama framework, atau nama klien (dengan izin)</td>
+</tr>
+<tr>
+<td><strong>Anti-hype</strong></td>
+<td>Tidak pernah klaim &quot;ROAS meledak&quot; atau &quot;viral overnight&quot;</td>
+</tr>
+<tr>
+<td><strong>AI as Amplifier</strong></td>
+<td>Tunjukkan AI workflow sebagai tool, bukan magic — Andhya yang interpret</td>
+</tr>
+<tr>
+<td><strong>Blueprint Deliverable</strong></td>
+<td>Setiap konten punya 1 actionable takeaway yang bisa langsung dipakai</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="content-calendar-4-minggu">Content Calendar — 4 Minggu</h2>
+<div class="table-scroll"><table>
+<thead><tr>
+<th>Minggu</th>
+<th>Senin</th>
+<th>Rabu</th>
+<th>Jumat</th>
+<th>Email</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Diagnosis post (titik bocor)</td>
+<td>Framework post (Value Equation)</td>
+<td>—</td>
+<td>Case study Umrah Family</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Behind-the-scenes (AI workflow)</td>
+<td>Diagnosis post (CAC vs LTV)</td>
+<td>—</td>
+<td>Framework: 3 funnel leaks</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Case study post (Bahasakuinggris)</td>
+<td>Framework post (Offer stack)</td>
+<td>—</td>
+<td>Objection handling email</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Diagnosis post (leaky bucket)</td>
+<td>Behind-the-scenes (blueprint process)</td>
+<td>—</td>
+<td>Soft offer: Boncos Checker</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="email-sequence-nurture-5-email">Email Sequence — Nurture 5 Email</h2>
+<p>Untuk lead yang sudah isi Boncos Checker tapi belum booking discovery call:</p>
+<div class="table-scroll"><table>
+<thead><tr>
+<th>Email</th>
+<th>Hari</th>
+<th>Topik</th>
+<th>CTA</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>H+0</td>
+<td>Recap hasil Boncos Checker + apa artinya</td>
+<td>Booking link</td>
+</tr>
+<tr>
+<td>2</td>
+<td>H+3</td>
+<td>Case study relevan (sesuai titik bocor)</td>
+<td>&quot;Apakah ini mirip kondisi Anda?&quot;</td>
+</tr>
+<tr>
+<td>3</td>
+<td>H+7</td>
+<td>Framework: cara fix titik bocor yang ditemukan</td>
+<td>Booking link</td>
+</tr>
+<tr>
+<td>4</td>
+<td>H+12</td>
+<td>Objection handling: &quot;Beda blueprint vs kursus&quot;</td>
+<td>Booking link</td>
+</tr>
+<tr>
+<td>5</td>
+<td>H+18</td>
+<td>Final: &quot;Slot bulan ini hampir penuh&quot;</td>
+<td>Booking link</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="meta-ads-content-rules">Meta Ads Content Rules</h2>
+<p>Framework IOR (Iklan Otak Reptil):</p>
+<ol>
+<li><strong>Hook diagnosis-led</strong> — identifikasi masalah spesifik di 3 detik pertama</li>
+<li><strong>Pattern interrupt</strong> — data point atau pertanyaan yang mengejutkan</li>
+<li><strong>Problem agitate</strong> — perjelas dampak kalau tidak diselesaikan</li>
+<li><strong>Solution hint</strong> — tunjukkan ada cara yang lebih baik (tanpa reveal semua)</li>
+<li><strong>CTA spesifik</strong> — satu aksi tunggal (Boncos Checker atau discovery call)</li>
+</ol>
+<p><strong>Larangan di Meta Ads:</strong></p>
+<ul>
+<li>Tidak ada klaim income atau ROAS spesifik</li>
+<li>Tidak ada countdown palsu</li>
+<li>Tidak ada &quot;dijamin&quot; atau &quot;pasti berhasil&quot;</li>
+</ul>
+<hr/>
+<h2 id="content-metrics-kpi-mingguan">Content Metrics — KPI Mingguan</h2>
+<div class="table-scroll"><table>
+<thead><tr>
+<th>Metrik</th>
+<th>Target</th>
+<th>Cara Ukur</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Threads reach</td>
+<td>5.000-20.000/post</td>
+<td>Threads analytics</td>
+</tr>
+<tr>
+<td>Engagement rate</td>
+<td>&gt;3%</td>
+<td>Likes + replies &#247; reach</td>
+</tr>
+<tr>
+<td>DM/inquiry rate</td>
+<td>5-10 DM/minggu</td>
+<td>Manual count</td>
+</tr>
+<tr>
+<td>Boncos Checker signups</td>
+<td>20-50/minggu</td>
+<td>Scalev CRM</td>
+</tr>
+<tr>
+<td>Email open rate</td>
+<td>&gt;35%</td>
+<td>Mailketing dashboard</td>
+</tr>
+<tr>
+<td>Discovery call bookings</td>
+<td>5-10/minggu</td>
+<td>Scalev calendar</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="lampiran-hook-bank-20-hook-diagnosis-led">Lampiran — Hook Bank (20 Hook Diagnosis-Led)</h2>
+<ol>
+<li>&quot;Iklan boncos sering bukan salah Meta Ads-nya.&quot;</li>
+<li>&quot;Funnel bocor di 3 tempat. Kebanyakan founder hanya fix 1.&quot;</li>
+<li>&quot;CAC naik bukan berarti harus naikkan budget.&quot;</li>
+<li>&quot;Offer yang lemah tidak bisa diselamatkan oleh copywriting yang bagus.&quot;</li>
+<li>&quot;LTV klien Anda berapa? Kalau tidak tahu, itu masalah pertama.&quot;</li>
+<li>&quot;Revenue stagnan 3 bulan berturut-turut? Itu bukan masalah traffic.&quot;</li>
+<li>&quot;Banyak founder scale ads sebelum fix funnel. Hasilnya: boncos lebih cepat.&quot;</li>
+<li>&quot;Discovery call yang bagus bukan tentang jualan — tapi tentang diagnose.&quot;</li>
+<li>&quot;Blueprint tanpa eksekusi = dokumen. Eksekusi tanpa blueprint = chaos.&quot;</li>
+<li>&quot;22 tahun di industri ini mengajarkan satu hal: diagnose dulu, baru prescribe.&quot;</li>
+<li>&quot;Leaky bucket: kamu isi terus dari atas, tapi bocor di bawah.&quot;</li>
+<li>&quot;Agency mahal sering kasih hasil zonk bukan karena tidak kompeten — tapi karena tidak diagnose dulu.&quot;</li>
+<li>&quot;Kursus online kasih curriculum. Blueprint kasih sistem untuk bisnis Anda.&quot;</li>
+<li>&quot;AI bukan pengganti pengalaman. Tapi AI bisa amplify pengalaman 3-5x lebih cepat.&quot;</li>
+<li>&quot;Retarget tanpa nurture = spam. Nurture tanpa retarget = invisible.&quot;</li>
+<li>&quot;Conversion rate rendah bukan selalu masalah copy. Cek offer-nya dulu.&quot;</li>
+<li>&quot;Scaling tanpa sistem = chaos yang lebih mahal.&quot;</li>
+<li>&quot;Follow-up 1x lalu menyerah = meninggalkan 80% revenue di meja.&quot;</li>
+<li>&quot;Positioning yang lemah membuat semua marketing effort lebih mahal.&quot;</li>
+<li>&quot;Berhenti tebak-tebakan. Mulai dari diagnosis yang konkret.&quot;</li>
+</ol></section></article></main>
+</div>
+<button aria-label="Kembali ke atas" class="back-to-top" id="backToTop" type="button">&#8593;</button>
+<script>
+    (function () {
+      'use strict';
+      var sidebar = document.getElementById('sidebar');
+      var overlay = document.getElementById('sidebarOverlay');
+      var toggle = document.getElementById('sidebarToggle');
+      var backBtn = document.getElementById('backToTop');
+      var progressBar = document.getElementById('readingProgress');
+      var tocLinks = Array.from(document.querySelectorAll('.toc-list a'));
+      var sections = tocLinks
+        .map(function (a) { return document.getElementById(a.dataset.target); })
+        .filter(Boolean);
+
+      /* --- Sidebar open/close with overlay --- */
+      function openSidebar() {
+        sidebar.classList.add('open');
+        overlay.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeSidebar() {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          if (sidebar.classList.contains('open')) { closeSidebar(); }
+          else { openSidebar(); }
+        });
+      }
+      if (overlay) {
+        overlay.addEventListener('click', closeSidebar);
+      }
+
+      /* --- Swipe to close sidebar --- */
+      var touchStartX = 0;
+      var touchStartY = 0;
+      sidebar.addEventListener('touchstart', function (e) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+      sidebar.addEventListener('touchend', function (e) {
+        var dx = e.changedTouches[0].clientX - touchStartX;
+        var dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
+        if (dx < -60 && dy < 80) { closeSidebar(); }
+      }, { passive: true });
+
+      /* --- TOC link click closes sidebar on mobile --- */
+      tocLinks.forEach(function (a) {
+        a.addEventListener('click', function () {
+          if (window.innerWidth <= 1024) { closeSidebar(); }
+        });
+      });
+
+      /* --- Scroll spy --- */
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var id = entry.target.id;
+            tocLinks.forEach(function (link) {
+              if (link.dataset.target === id) {
+                link.classList.add('active');
+                /* Auto-scroll TOC to active item on desktop */
+                if (window.innerWidth > 1024 && sidebar.scrollHeight > sidebar.clientHeight) {
+                  link.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+                }
+              } else {
+                link.classList.remove('active');
+              }
+            });
+          });
+        },
+        { rootMargin: '-30% 0px -55% 0px', threshold: 0.1 }
+      );
+      sections.forEach(function (sec) { observer.observe(sec); });
+
+      /* --- Reading progress bar + back-to-top --- */
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          window.requestAnimationFrame(function () {
+            var scrollTop = window.scrollY || document.documentElement.scrollTop;
+            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            if (docHeight > 0) {
+              progressBar.style.width = Math.min((scrollTop / docHeight) * 100, 100) + '%';
+            }
+            if (scrollTop > 400) { backBtn.classList.add('show'); }
+            else { backBtn.classList.remove('show'); }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+
+      backBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      /* --- Profile accordion on mobile --- */
+      function initAccordion() {
+        var isMobile = window.innerWidth <= 768;
+        var profiles = document.querySelectorAll('h3[id]');
+        profiles.forEach(function (h3) {
+          /* Only profile headings (G0-x, numbered, S-x, T-x) */
+          var text = h3.textContent || '';
+          if (!/^(G0-|[0-9]+\.|S[0-9]|T-[0-9])/.test(text.trim())) return;
+
+          var existingBtn = h3.querySelector('.profile-collapse-btn');
+          if (!existingBtn) {
+            var btn = document.createElement('button');
+            btn.className = 'profile-collapse-btn';
+            btn.textContent = '▼';
+            btn.setAttribute('aria-label', 'Buka/tutup profil');
+            h3.appendChild(btn);
+          }
+
+          var btn = h3.querySelector('.profile-collapse-btn');
+          /* Collect siblings until next h3 or h2 */
+          var body = h3.nextElementSibling;
+          if (body && body.classList.contains('profile-body')) {
+            /* Already wrapped */
+            if (isMobile && !body.classList.contains('collapsed')) {
+              body.classList.add('collapsed');
+              btn.textContent = '▶';
+            } else if (!isMobile) {
+              body.classList.remove('collapsed');
+              btn.textContent = '▼';
+            }
+            return;
+          }
+
+          /* Wrap profile content in a div */
+          var wrapper = document.createElement('div');
+          wrapper.className = 'profile-body';
+          var sibling = h3.nextElementSibling;
+          while (sibling && sibling.tagName !== 'H3' && sibling.tagName !== 'H2') {
+            var next = sibling.nextElementSibling;
+            wrapper.appendChild(sibling);
+            sibling = next;
+          }
+          h3.parentNode.insertBefore(wrapper, sibling);
+
+          if (isMobile) {
+            wrapper.classList.add('collapsed');
+            btn.textContent = '▶';
+          }
+        });
+      }
+
+      /* Toggle accordion on click */
+      document.addEventListener('click', function (e) {
+        if (!e.target.classList.contains('profile-collapse-btn')) return;
+        var h3 = e.target.closest('h3');
+        if (!h3) return;
+        var body = h3.nextElementSibling;
+        if (body && body.classList.contains('profile-body')) {
+          body.classList.toggle('collapsed');
+          e.target.textContent = body.classList.contains('collapsed') ? '▶' : '▼';
+        }
+      });
+
+      /* Init accordion on load and resize */
+      initAccordion();
+      var resizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(initAccordion, 250);
+      });
+
+      /* --- Keyboard: Escape closes sidebar --- */
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+          closeSidebar();
+        }
+      });
+    })();
+    
+</script>
+</body>
+</html>

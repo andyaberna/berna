@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Funnels, Conversions &amp; Customer Journeys — Andhya Berna</title>
+<style>
+    :root { --bg:#fff; --text:#1f2937; --heading:#1a365d; --accent:#d69e2e; --danger:#e53e3e; --line:#e5e7eb; --muted:#64748b; --soft:#f8fafc; --bridge:#f0f4f8; --lesson:#fffbeb; --whatif:#f5f0ff; }
+    * { box-sizing:border-box; } html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:"Segoe UI", system-ui, -apple-system, sans-serif; line-height:1.65; }
+    h1,h2,h3,h4,h5 { font-family:Georgia, "Times New Roman", serif; color:var(--heading); line-height:1.3; scroll-margin-top:80px; }
+    .cover { min-height:100vh; display:grid; place-items:center; text-align:center; padding:2rem; border-bottom:1px solid var(--line); }
+    .cover h1 { font-size:clamp(2rem,4vw,3.3rem); margin:.25rem 0; }
+    .cover .subtitle { color:var(--heading); font-size:1.1rem; } .cover .meta { color:var(--muted); margin-top:1rem; }
+    .layout { display:flex; }
+    .sidebar-toggle { display:none; position:fixed; top:12px; left:12px; z-index:1200; border:1px solid var(--line); background:white; border-radius:8px; padding:.45rem .65rem; }
+    aside { position:sticky; top:0; align-self:flex-start; width:310px; max-height:100vh; overflow:auto; border-right:1px solid var(--line); background:#fff; padding:1rem; }
+    .toc-list,.toc-list ul { list-style:none; margin:0; padding-left:.8rem; } .toc-list>li { margin:.24rem 0; }
+    .toc-list a { text-decoration:none; color:#334155; font-size:.92rem; display:block; padding:.16rem .4rem; border-left:2px solid transparent; border-radius:4px; }
+    .toc-list a.active { color:var(--heading); border-left-color:var(--accent); background:#f8fafc; font-weight:600; }
+    main { flex:1; padding:1.2rem clamp(1rem,3vw,2.5rem) 3rem; } .ebook-content { max-width:980px; margin:auto; }
+    .major-section { padding:1rem 0; border-bottom:1px solid var(--line); } .section-alt { background:var(--soft); padding:1.1rem; border-radius:10px; border:1px solid #edf2f7; }
+    .table-scroll { overflow-x:auto; margin:1rem 0; } table { width:100%; border-collapse:collapse; min-width:640px; background:#fff; }
+    th,td { border:1px solid #dbe1e8; padding:.58rem .6rem; vertical-align:top; } th { background:#f8fafc; font-weight:700; }
+    .scorecard-table th::after { content:" ⇅"; color:#94a3b8; font-size:.78em; } .scorecard-table tbody tr:nth-child(even) { background:#fcfdff; }
+    .status-green { background:#e6ffed; } .status-yellow { background:#fffbea; } .status-red { background:#ffe8e8; } .status-gray { background:#f3f4f6; }
+    .warning-marker { color:var(--danger); font-weight:700; font-size:1.12em; } .controversial-heading { border-left:4px solid var(--danger); padding-left:.55rem; }
+    blockquote { margin:1rem 0; border-left:4px solid #cbd5e1; padding:.6rem .85rem; background:#f8fafc; }
+    .archetype-box { display:flex; flex-wrap:wrap; align-items:center; gap:.45rem; margin:.8rem 0 1rem; } .archetype-label { font-weight:700; color:#475569; }
+    .archetype-pill { background:#ebf4ff; border:1px solid #bfdbfe; color:#1e40af; padding:.22rem .55rem; border-radius:999px; font-size:.86rem; }
+    .lesson-box { background:var(--lesson); border-left:4px solid var(--accent); padding:.7rem .8rem; margin:.9rem 0 1.1rem; font-size:.95rem; } .lesson-title { margin:.2rem 0 .45rem; font-weight:700; }
+    .narrative-bridge { background:var(--bridge); border:1px solid #d7e0ea; border-radius:10px; padding:.75rem .9rem; margin:1rem 0; } .narrative-bridge p { font-style:italic; color:#334155; }
+    .timeline-scroll { overflow-x:auto; padding-bottom:.5rem; margin:.9rem 0 1.2rem; } .timeline-track { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(180px,1fr); gap:.65rem; min-width:max-content; }
+    .timeline-col { border:1px solid #dbe4ee; border-radius:10px; background:#fff; padding:.55rem; } .timeline-year { font-weight:700; color:var(--heading); border-bottom:1px solid #e2e8f0; padding-bottom:.35rem; margin-bottom:.45rem; }
+    .timeline-event { font-size:.9rem; padding:.42rem .5rem; border-radius:7px; margin:.36rem 0; border:1px solid transparent; } .timeline-event.positive { background:#ecfdf3; border-color:#b7efcc; } .timeline-event.negative { background:#fff1f1; border-color:#f6c2c2; }
+    .pattern-chain { display:flex; flex-direction:column; gap:.4rem; margin:1rem 0 1.2rem; } .chain-card { border:1px solid #dbe4ee; border-radius:9px; background:#fff; padding:.6rem .7rem; } .chain-arrow { text-align:center; color:#64748b; font-size:1.2rem; }
+    .juxtaposition-wrap { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.8rem; margin:.75rem 0 1rem; } .juxta-card { border-radius:10px; border:1px solid #e2e8f0; padding:.65rem .75rem; }
+    .juxta-card.positive { background:#f0fff4; border-color:#bbf7d0; } .juxta-card.positive h5 { color:#166534; } .juxta-card.negative { background:#fff1f2; border-color:#fecdd3; } .juxta-card.negative h5 { color:#991b1b; }
+    .whatif-card { background:var(--whatif); border-left:4px solid #7c3aed; padding:.65rem .8rem; border-radius:8px; margin:.6rem 0; }
+    .checklist-table tbody tr td:first-child { font-weight:700; text-align:center; width:48px; } .fake-checkbox { display:inline-block; border:1px solid #cbd5e1; border-radius:6px; padding:.14rem .38rem; background:#fff; font-family:ui-monospace,monospace; }
+    .retro-score-table td:nth-child(2) { font-weight:700; text-align:center; } .score-safe { background:#ecfdf3; color:#166534; } .score-low { background:#fffbea; color:#92400e; } .score-mid { background:#fff7ed; color:#9a3412; } .score-high { background:#fee2e2; color:#991b1b; }
+    .back-to-top { position:fixed; right:16px; bottom:18px; border:none; background:var(--heading); color:#fff; width:42px; height:42px; border-radius:999px; cursor:pointer; opacity:0; transform:translateY(8px); transition:.2s; } .back-to-top.show { opacity:1; transform:translateY(0); }
+    /* --- Overlay backdrop --- */
+    .sidebar-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:1050; opacity:0; transition:opacity .24s; }
+    .sidebar-overlay.show { display:block; opacity:1; }
+
+    /* --- Reading progress bar --- */
+    .reading-progress { position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,var(--accent),#f59e0b); z-index:1300; width:0; transition:width .12s linear; }
+
+    /* --- Accordion for mobile profiles --- */
+    .profile-collapse-btn { display:none; }
+
+    /* ===== TABLET: ≤1024px ===== */
+    @media (max-width:1024px) {
+      .sidebar-toggle { display:block; }
+      aside { position:fixed; top:0; left:0; transform:translateX(-105%); transition:.24s; z-index:1100; width:min(82vw,320px); box-shadow:0 10px 30px rgba(2,6,23,.18); }
+      aside.open { transform:translateX(0); }
+      main { padding-top:3.8rem; }
+      .juxtaposition-wrap { grid-template-columns:1fr; }
+      .toc-list a { padding:.4rem .5rem; min-height:36px; display:flex; align-items:center; }
+    }
+
+    /* ===== MOBILE: ≤768px ===== */
+    @media (max-width:768px) {
+      body { font-size:15px; line-height:1.7; -webkit-text-size-adjust:100%; }
+      h1 { font-size:1.6rem; } h2 { font-size:1.35rem; scroll-margin-top:56px; } h3 { font-size:1.15rem; scroll-margin-top:56px; } h4 { font-size:1.05rem; }
+      main { padding:3.2rem .75rem 4rem; }
+      .cover { min-height:80vh; padding:1.5rem 1rem; }
+      .cover h1 { font-size:1.6rem; }
+      .cover .subtitle { font-size:.95rem; }
+
+      /* Tables: scroll hint + shadow */
+      .table-scroll { position:relative; }
+      .table-scroll::after { content:"\2190  geser \2192 "; display:block; text-align:center; font-size:.78rem; color:var(--muted); padding:.3rem 0; }
+      table { min-width:520px; font-size:.85rem; }
+      th,td { padding:.4rem .45rem; }
+
+      /* TOC touch targets */
+      .toc-list a { padding:.5rem .55rem; min-height:44px; font-size:.95rem; border-radius:6px; }
+      .toc-list>li { margin:.12rem 0; }
+
+      /* Sidebar wider on mobile */
+      aside { width:min(88vw,340px); padding:.8rem .6rem; }
+
+      /* Lesson box, bridge, whatif — full width */
+      .lesson-box, .narrative-bridge, .whatif-card { padding:.6rem .65rem; font-size:.9rem; }
+      blockquote { padding:.5rem .65rem; font-size:.93rem; }
+
+      /* Timeline: smaller columns */
+      .timeline-track { grid-auto-columns:minmax(150px,1fr); }
+      .timeline-event { font-size:.82rem; padding:.35rem .4rem; }
+
+      /* Pattern chain */
+      .chain-card { padding:.5rem .55rem; font-size:.9rem; }
+
+      /* Archetype pills */
+      .archetype-pill { font-size:.8rem; padding:.18rem .45rem; }
+
+      /* Back to top: larger touch target */
+      .back-to-top { width:48px; height:48px; font-size:1.2rem; right:12px; bottom:14px; }
+
+      /* Hamburger: larger */
+      .sidebar-toggle { padding:.55rem .75rem; font-size:1.15rem; top:8px; left:8px; }
+
+      /* Profile accordion */
+      .profile-collapse-btn { display:inline-block; background:none; border:1px solid var(--line); border-radius:6px; padding:.3rem .6rem; font-size:.82rem; color:var(--muted); cursor:pointer; margin-left:.5rem; vertical-align:middle; }
+      .profile-body.collapsed { display:none; }
+
+      /* Juxtaposition cards stacked */
+      .juxta-card { padding:.55rem .6rem; font-size:.9rem; }
+
+      /* Checklist table */
+      .checklist-table { min-width:400px; }
+
+      /* Scorecard table */
+      .scorecard-table { min-width:700px; font-size:.8rem; }
+    }
+
+    /* ===== SMALL PHONE: ≤480px ===== */
+    @media (max-width:480px) {
+      body { font-size:14px; }
+      h1 { font-size:1.4rem; } h2 { font-size:1.2rem; } h3 { font-size:1.08rem; }
+      main { padding:3rem .5rem 4rem; }
+      .cover { min-height:70vh; padding:1.2rem .8rem; }
+      .cover h1 { font-size:1.35rem; }
+      .cover .subtitle { font-size:.88rem; }
+      .section-alt { padding:.7rem; border-radius:8px; }
+      .lesson-box, .narrative-bridge, .whatif-card { margin:.6rem -.15rem; border-radius:6px; }
+      table { min-width:440px; font-size:.78rem; }
+      th,td { padding:.32rem .35rem; }
+      .timeline-track { grid-auto-columns:minmax(130px,1fr); gap:.45rem; }
+      .archetype-box { gap:.3rem; }
+      .archetype-pill { font-size:.75rem; }
+      aside { width:min(92vw,300px); }
+      .toc-list a { font-size:.9rem; }
+    }
+
+    /* ===== PRINT ===== */
+    @media print { @page { margin:2cm; } .sidebar-toggle,aside,.back-to-top,.reading-progress,.sidebar-overlay,.profile-collapse-btn { display:none !important; } main { padding:0; } .major-section,.section-alt { break-inside:avoid; page-break-inside:avoid; border:none; background:#fff; } h2 { break-before:page; page-break-before:always; } a { color:#000; text-decoration:none; } .profile-body.collapsed { display:block !important; } }
+  
+.back-home { padding:.8rem 1.5rem .2rem; }
+.back-home a { display:inline-flex; align-items:center; gap:.4rem; color:#4a5568; text-decoration:none; font-size:.9rem; font-weight:500; padding:.4rem .8rem; border-radius:6px; border:1px solid #e2e8f0; background:#fff; transition:all .15s; }
+.back-home a:hover { color:#1a365d; border-color:#1a365d; background:#f7fafc; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+@media(max-width:600px) { .back-home { padding:.6rem 1rem .2rem; } .back-home a { font-size:.82rem; } }
+</style>
+</head>
+<body>
+<header class="cover">
+<div>
+<h1>Funnels, Conversions &amp; Customer Journeys — Andhya Berna</h1>
+<p class="subtitle">Dokumen Blueprint</p>
+<p class="meta">Regenerasi HTML &#8226; 29 April 2026</p>
+</div>
+</header>
+<div class="reading-progress" id="readingProgress"></div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<button aria-label="Buka/Tutup Daftar Isi" class="sidebar-toggle" id="sidebarToggle" type="button">&#9776;</button>
+<div class="layout">
+<aside id="sidebar"><h2>Daftar Isi</h2><ul class="toc-list">
+<li><a data-target="konteks" href="#konteks">Konteks</a></li>
+<li><a data-target="value-ladder-anatomy" href="#value-ladder-anatomy">Value Ladder Anatomy</a></li>
+<li><a data-target="funnel-type-application-discovery-call-funnel" href="#funnel-type-application-discovery-call-funnel">Funnel Type: Application / Discovery Call Funnel</a></li>
+<li><a data-target="awareness-levels-per-persona" href="#awareness-levels-per-persona">Awareness Levels per Persona</a></li>
+<li><a data-target="landing-page-wireframe-boncos-checker" href="#landing-page-wireframe-boncos-checker">Landing Page Wireframe — Boncos Checker</a></li>
+<li><a data-target="discovery-call-funnel-step-by-step" href="#discovery-call-funnel-step-by-step">Discovery Call Funnel — Step by Step</a></li>
+<li><a data-target="nurture-sequence-5-email-soap-opera" href="#nurture-sequence-5-email-soap-opera">Nurture Sequence — 5 Email Soap Opera</a></li>
+<li><a data-target="ascension-path-tier-1-tier-2-tier-3" href="#ascension-path-tier-1-tier-2-tier-3">Ascension Path — Tier 1 → Tier 2 → Tier 3</a></li>
+<li><a data-target="conversion-benchmarks" href="#conversion-benchmarks">Conversion Benchmarks</a></li>
+<li><a data-target="tool-stack" href="#tool-stack">Tool Stack</a></li>
+<li><a data-target="common-funnel-leaks-fix" href="#common-funnel-leaks-fix">Common Funnel Leaks &amp; Fix</a></li>
+</ul></aside>
+<main><nav class="back-home"><a href="../index.html">&larr; Back to Home Page</a></nav><article class="ebook-content"><section class="major-section"><h1>Funnels, Conversions &amp; Customer Journeys — Andhya Berna</h1>
+<blockquote>
+<p>AI-Powered Marketing Strategist | 22 tahun CMO/CTO | Cepat Digital Teknologi, Jogja</p>
+</blockquote>
+<hr/>
+<h2 id="konteks">Konteks</h2>
+<p>Blueprint ini merancang funnel Andhya Berna dari awareness sampai close — termasuk Value Ladder, discovery call funnel, nurture sequence, dan ascension path antar tier.</p>
+<hr/>
+<h2 id="value-ladder-anatomy">Value Ladder Anatomy</h2>
+<pre><code>
+Boncos Checker (Rp0) — Diagnostic qualifier, 3 menit
+    ↓ 40-60% convert
+Marketing Skills Starter (Rp297rb) — 1 skill self-serve
+Marketing Skills Bundle (Rp797rb) — 4 skill core
+Marketing Skills Pro (Rp1.997jt) — 9 skill + onboarding
+    ↓ atau langsung ke
+Master License (Rp7.97jt) — untuk konsultan/agency
+    ↓ atau
+Tier 1 Single Skill Blueprint (Rp4.5-7jt) — 1 area custom
+    ↓ 40% ascend dalam 90 hari
+Tier 2 Bundle Blueprint (Rp12-18jt) — 3 area terintegrasi
+    ↓ 30% ascend dalam 6 bulan
+Tier 3 Complete Blueprint (Rp25-35jt) — 8 area + Brand Context
+</code></pre>
+<hr/>
+<h2 id="funnel-type-application-discovery-call-funnel">Funnel Type: Application / Discovery Call Funnel</h2>
+<p>Untuk Tier 1-3, ini bukan direct checkout. Prosesnya:</p>
+<pre><code>
+[Awareness] Threads post / Meta Ads
+    ↓
+[Lead Magnet] Boncos Checker LP → form isi → hasil diagnostic
+    ↓
+[Qualification] Email sequence 5 hari → booking discovery call
+    ↓
+[Discovery Call] 30-60 menit → diagnose → propose tier
+    ↓
+[Proposal] Email dalam 24 jam → follow-up 3x dalam 7 hari
+    ↓
+[Close] Onboarding email → kick-off call → delivery
+    ↓
+[Ascension] Post-delivery → upsell tier berikutnya
+</code></pre>
+<hr/>
+<h2 id="awareness-levels-per-persona">Awareness Levels per Persona</h2>
+<div class="table-scroll"><table>
+<thead><tr>
+<th>Persona</th>
+<th>Awareness Level</th>
+<th>Entry Point</th>
+<th>Pesan Utama</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>PERSONA_01 (Solopreneur)</td>
+<td>Problem-Aware</td>
+<td>Boncos Checker</td>
+<td>&quot;Cek titik bocor funnel kamu&quot;</td>
+</tr>
+<tr>
+<td>PERSONA_01_ADVANCED</td>
+<td>Solution-Aware</td>
+<td>Marketing Skills Pro</td>
+<td>&quot;Full 9-skill methodology + onboarding&quot;</td>
+</tr>
+<tr>
+<td>PERSONA_02_LITE (Founder)</td>
+<td>Solution-Aware</td>
+<td>Tier 1 Blueprint</td>
+<td>&quot;Blueprint 1 area siap eksekusi&quot;</td>
+</tr>
+<tr>
+<td>PERSONA_02 (Stuck Owner)</td>
+<td>Solution-Aware</td>
+<td>Tier 2 Bundle</td>
+<td>&quot;3 area terintegrasi + roadmap 60 hari&quot;</td>
+</tr>
+<tr>
+<td>PERSONA_02_PREMIUM</td>
+<td>Most-Aware</td>
+<td>Tier 3 Complete</td>
+<td>&quot;Full marketing system 8 area&quot;</td>
+</tr>
+<tr>
+<td>PERSONA_03_CONSULTANT</td>
+<td>Most-Aware</td>
+<td>Master License</td>
+<td>&quot;Commercial license + mentoring&quot;</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="landing-page-wireframe-boncos-checker">Landing Page Wireframe — Boncos Checker</h2>
+<p><strong>Tujuan:</strong> Capture lead + qualify berdasar titik bocor</p>
+<div class="table-scroll"><table>
+<thead><tr>
+<th>Section</th>
+<th>Konten</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Hero</td>
+<td>Hook: &quot;Iklan boncos? Cek dulu titik bocornya — 3 menit.&quot; + CTA form</td>
+</tr>
+<tr>
+<td>Problem</td>
+<td>3 gejala umum (CAC naik, conversion rendah, backend kosong)</td>
+</tr>
+<tr>
+<td>Tool</td>
+<td>Penjelasan Boncos Checker: 5 pertanyaan, hasil langsung</td>
+</tr>
+<tr>
+<td>Authority</td>
+<td>Foto Andhya + 22 tahun + Top 100 Seller Scalev</td>
+</tr>
+<tr>
+<td>CTA</td>
+<td>Form: nama, email, WA, revenue range, masalah utama</td>
+</tr>
+<tr>
+<td>Footer</td>
+<td>Privacy policy + &quot;Tidak ada spam&quot;</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="discovery-call-funnel-step-by-step">Discovery Call Funnel — Step by Step</h2>
+<div class="table-scroll"><table>
+<thead><tr>
+<th>Step</th>
+<th>Timing</th>
+<th>Aksi</th>
+<th>Tool</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Booking</td>
+<td>Setelah Boncos Checker</td>
+<td>Kirim booking link (Calendly/Scalev)</td>
+<td>Email otomatis</td>
+</tr>
+<tr>
+<td>Konfirmasi</td>
+<td>Langsung setelah booking</td>
+<td>Email konfirmasi + prep questions</td>
+<td>Mailketing</td>
+</tr>
+<tr>
+<td>Reminder H-1</td>
+<td>24 jam sebelum call</td>
+<td>Email + WA reminder</td>
+<td>Mailketing + WA</td>
+</tr>
+<tr>
+<td>Reminder H-0</td>
+<td>1 jam sebelum call</td>
+<td>WA reminder + link Zoom</td>
+<td>WA manual</td>
+</tr>
+<tr>
+<td>Post-call</td>
+<td>Dalam 24 jam</td>
+<td>Email recap + proposal</td>
+<td>Manual</td>
+</tr>
+<tr>
+<td>Follow-up 1</td>
+<td>H+3</td>
+<td>Check-in + case study</td>
+<td>Email</td>
+</tr>
+<tr>
+<td>Follow-up 2</td>
+<td>H+7</td>
+<td>Objection handling</td>
+<td>Email</td>
+</tr>
+<tr>
+<td>Follow-up 3</td>
+<td>H+14</td>
+<td>Final offer</td>
+<td>Email</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Show rate target:</strong> 70%+ (dengan reminder H-1 + H-0)</p>
+<hr/>
+<h2 id="nurture-sequence-5-email-soap-opera">Nurture Sequence — 5 Email Soap Opera</h2>
+<div class="table-scroll"><table>
+<thead><tr>
+<th>Email</th>
+<th>Hari</th>
+<th>Topik</th>
+<th>Panjang</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>H+0</td>
+<td>Backstory: kenapa Andhya fokus ke blueprint methodology</td>
+<td>250 kata</td>
+</tr>
+<tr>
+<td>2</td>
+<td>H+2</td>
+<td>Diagnosis framework: 3 titik bocor paling umum</td>
+<td>300 kata</td>
+</tr>
+<tr>
+<td>3</td>
+<td>H+5</td>
+<td>Case study: Umrah Family atau Bahasakuinggris</td>
+<td>350 kata</td>
+</tr>
+<tr>
+<td>4</td>
+<td>H+9</td>
+<td>Objection handling: &quot;Beda blueprint vs kursus vs agency&quot;</td>
+<td>300 kata</td>
+</tr>
+<tr>
+<td>5</td>
+<td>H+14</td>
+<td>Soft offer: Boncos Checker → discovery call</td>
+<td>200 kata</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="ascension-path-tier-1-tier-2-tier-3">Ascension Path — Tier 1 → Tier 2 → Tier 3</h2>
+<p><strong>Trigger ascension Tier 1 → Tier 2:</strong></p>
+<ul>
+<li>Klien selesai eksekusi blueprint Tier 1 (minggu ke-6-8)</li>
+<li>NPS ≥ 8/10</li>
+<li>Identifikasi 2 area lain yang masih bocor</li>
+</ul>
+<p><strong>Cara offer ascension:</strong></p>
+<ul>
+<li>Post-delivery review call (30 menit, gratis)</li>
+<li>Tunjukkan hasil Tier 1 + identifikasi gap berikutnya</li>
+<li>Propose Tier 2 dengan framing &quot;lanjutkan momentum&quot;</li>
+</ul>
+<p><strong>Target:</strong> 40% klien Tier 1 naik ke Tier 2 dalam 90 hari</p>
+<hr/>
+<h2 id="conversion-benchmarks">Conversion Benchmarks</h2>
+<div class="table-scroll"><table>
+<thead><tr>
+<th>Stage</th>
+<th>Target</th>
+<th>Cara Naik</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>LP → Boncos Checker completion</td>
+<td>15-25%</td>
+<td>Perjelas value prop di hero section</td>
+</tr>
+<tr>
+<td>Boncos Checker → discovery call booked</td>
+<td>25-35%</td>
+<td>Perbaiki email sequence H+0</td>
+</tr>
+<tr>
+<td>Discovery call booked → showed</td>
+<td>70%+</td>
+<td>Reminder H-1 + H-0 wajib</td>
+</tr>
+<tr>
+<td>Discovery call → proposal sent</td>
+<td>80%</td>
+<td>Kirim dalam 24 jam</td>
+</tr>
+<tr>
+<td>Proposal → close</td>
+<td>30-40%</td>
+<td>Follow-up 3x dalam 14 hari</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="tool-stack">Tool Stack</h2>
+<div class="table-scroll"><table>
+<thead><tr>
+<th>Fungsi</th>
+<th>Tool</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>CRM &amp; pipeline</td>
+<td>Scalev</td>
+</tr>
+<tr>
+<td>Email marketing</td>
+<td>Mailketing</td>
+</tr>
+<tr>
+<td>Payment</td>
+<td>Xendit</td>
+</tr>
+<tr>
+<td>Booking</td>
+<td>Calendly atau Scalev calendar</td>
+</tr>
+<tr>
+<td>Blueprint delivery</td>
+<td>GitHub Pages (HTML responsive)</td>
+</tr>
+<tr>
+<td>Pixel tracking</td>
+<td>Meta Pixel + UTM</td>
+</tr>
+<tr>
+<td>Lead magnet</td>
+<td>OpenAI Custom GPT (Boncos Checker)</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="common-funnel-leaks-fix">Common Funnel Leaks &amp; Fix</h2>
+<div class="table-scroll"><table>
+<thead><tr>
+<th>Leak</th>
+<th>Gejala</th>
+<th>Fix</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>No-show discovery call</td>
+<td>Show rate &lt; 50%</td>
+<td>Tambah reminder WA H-0</td>
+</tr>
+<tr>
+<td>Ghosting setelah proposal</td>
+<td>Tidak ada respons 7 hari</td>
+<td>Follow-up dengan case study, bukan repeat proposal</td>
+</tr>
+<tr>
+<td>Price objection</td>
+<td>&quot;Mahal&quot; di discovery call</td>
+<td>Reframe ke ROI + cost of inaction</td>
+</tr>
+<tr>
+<td>Tier 1 tidak ascend</td>
+<td>Klien selesai tapi tidak lanjut</td>
+<td>Jadwalkan post-delivery review call</td>
+</tr>
+<tr>
+<td>Self-serve tidak convert ke service</td>
+<td>Beli Starter/Bundle tapi tidak ke Tier 1</td>
+<td>Email sequence khusus: &quot;Sudah setup? Ini next step.&quot;</td>
+</tr>
+</tbody>
+</table></div></section></article></main>
+</div>
+<button aria-label="Kembali ke atas" class="back-to-top" id="backToTop" type="button">&#8593;</button>
+<script>
+    (function () {
+      'use strict';
+      var sidebar = document.getElementById('sidebar');
+      var overlay = document.getElementById('sidebarOverlay');
+      var toggle = document.getElementById('sidebarToggle');
+      var backBtn = document.getElementById('backToTop');
+      var progressBar = document.getElementById('readingProgress');
+      var tocLinks = Array.from(document.querySelectorAll('.toc-list a'));
+      var sections = tocLinks
+        .map(function (a) { return document.getElementById(a.dataset.target); })
+        .filter(Boolean);
+
+      /* --- Sidebar open/close with overlay --- */
+      function openSidebar() {
+        sidebar.classList.add('open');
+        overlay.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeSidebar() {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          if (sidebar.classList.contains('open')) { closeSidebar(); }
+          else { openSidebar(); }
+        });
+      }
+      if (overlay) {
+        overlay.addEventListener('click', closeSidebar);
+      }
+
+      /* --- Swipe to close sidebar --- */
+      var touchStartX = 0;
+      var touchStartY = 0;
+      sidebar.addEventListener('touchstart', function (e) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+      sidebar.addEventListener('touchend', function (e) {
+        var dx = e.changedTouches[0].clientX - touchStartX;
+        var dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
+        if (dx < -60 && dy < 80) { closeSidebar(); }
+      }, { passive: true });
+
+      /* --- TOC link click closes sidebar on mobile --- */
+      tocLinks.forEach(function (a) {
+        a.addEventListener('click', function () {
+          if (window.innerWidth <= 1024) { closeSidebar(); }
+        });
+      });
+
+      /* --- Scroll spy --- */
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var id = entry.target.id;
+            tocLinks.forEach(function (link) {
+              if (link.dataset.target === id) {
+                link.classList.add('active');
+                /* Auto-scroll TOC to active item on desktop */
+                if (window.innerWidth > 1024 && sidebar.scrollHeight > sidebar.clientHeight) {
+                  link.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+                }
+              } else {
+                link.classList.remove('active');
+              }
+            });
+          });
+        },
+        { rootMargin: '-30% 0px -55% 0px', threshold: 0.1 }
+      );
+      sections.forEach(function (sec) { observer.observe(sec); });
+
+      /* --- Reading progress bar + back-to-top --- */
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          window.requestAnimationFrame(function () {
+            var scrollTop = window.scrollY || document.documentElement.scrollTop;
+            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            if (docHeight > 0) {
+              progressBar.style.width = Math.min((scrollTop / docHeight) * 100, 100) + '%';
+            }
+            if (scrollTop > 400) { backBtn.classList.add('show'); }
+            else { backBtn.classList.remove('show'); }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+
+      backBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      /* --- Profile accordion on mobile --- */
+      function initAccordion() {
+        var isMobile = window.innerWidth <= 768;
+        var profiles = document.querySelectorAll('h3[id]');
+        profiles.forEach(function (h3) {
+          /* Only profile headings (G0-x, numbered, S-x, T-x) */
+          var text = h3.textContent || '';
+          if (!/^(G0-|[0-9]+\.|S[0-9]|T-[0-9])/.test(text.trim())) return;
+
+          var existingBtn = h3.querySelector('.profile-collapse-btn');
+          if (!existingBtn) {
+            var btn = document.createElement('button');
+            btn.className = 'profile-collapse-btn';
+            btn.textContent = '▼';
+            btn.setAttribute('aria-label', 'Buka/tutup profil');
+            h3.appendChild(btn);
+          }
+
+          var btn = h3.querySelector('.profile-collapse-btn');
+          /* Collect siblings until next h3 or h2 */
+          var body = h3.nextElementSibling;
+          if (body && body.classList.contains('profile-body')) {
+            /* Already wrapped */
+            if (isMobile && !body.classList.contains('collapsed')) {
+              body.classList.add('collapsed');
+              btn.textContent = '▶';
+            } else if (!isMobile) {
+              body.classList.remove('collapsed');
+              btn.textContent = '▼';
+            }
+            return;
+          }
+
+          /* Wrap profile content in a div */
+          var wrapper = document.createElement('div');
+          wrapper.className = 'profile-body';
+          var sibling = h3.nextElementSibling;
+          while (sibling && sibling.tagName !== 'H3' && sibling.tagName !== 'H2') {
+            var next = sibling.nextElementSibling;
+            wrapper.appendChild(sibling);
+            sibling = next;
+          }
+          h3.parentNode.insertBefore(wrapper, sibling);
+
+          if (isMobile) {
+            wrapper.classList.add('collapsed');
+            btn.textContent = '▶';
+          }
+        });
+      }
+
+      /* Toggle accordion on click */
+      document.addEventListener('click', function (e) {
+        if (!e.target.classList.contains('profile-collapse-btn')) return;
+        var h3 = e.target.closest('h3');
+        if (!h3) return;
+        var body = h3.nextElementSibling;
+        if (body && body.classList.contains('profile-body')) {
+          body.classList.toggle('collapsed');
+          e.target.textContent = body.classList.contains('collapsed') ? '▶' : '▼';
+        }
+      });
+
+      /* Init accordion on load and resize */
+      initAccordion();
+      var resizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(initAccordion, 250);
+      });
+
+      /* --- Keyboard: Escape closes sidebar --- */
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+          closeSidebar();
+        }
+      });
+    })();
+    
+</script>
+</body>
+</html>

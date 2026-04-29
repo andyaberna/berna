@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Market Differentiation &amp; Positioning — Andhya Berna</title>
+<style>
+    :root { --bg:#fff; --text:#1f2937; --heading:#1a365d; --accent:#d69e2e; --danger:#e53e3e; --line:#e5e7eb; --muted:#64748b; --soft:#f8fafc; --bridge:#f0f4f8; --lesson:#fffbeb; --whatif:#f5f0ff; }
+    * { box-sizing:border-box; } html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:"Segoe UI", system-ui, -apple-system, sans-serif; line-height:1.65; }
+    h1,h2,h3,h4,h5 { font-family:Georgia, "Times New Roman", serif; color:var(--heading); line-height:1.3; scroll-margin-top:80px; }
+    .cover { min-height:100vh; display:grid; place-items:center; text-align:center; padding:2rem; border-bottom:1px solid var(--line); }
+    .cover h1 { font-size:clamp(2rem,4vw,3.3rem); margin:.25rem 0; }
+    .cover .subtitle { color:var(--heading); font-size:1.1rem; } .cover .meta { color:var(--muted); margin-top:1rem; }
+    .layout { display:flex; }
+    .sidebar-toggle { display:none; position:fixed; top:12px; left:12px; z-index:1200; border:1px solid var(--line); background:white; border-radius:8px; padding:.45rem .65rem; }
+    aside { position:sticky; top:0; align-self:flex-start; width:310px; max-height:100vh; overflow:auto; border-right:1px solid var(--line); background:#fff; padding:1rem; }
+    .toc-list,.toc-list ul { list-style:none; margin:0; padding-left:.8rem; } .toc-list>li { margin:.24rem 0; }
+    .toc-list a { text-decoration:none; color:#334155; font-size:.92rem; display:block; padding:.16rem .4rem; border-left:2px solid transparent; border-radius:4px; }
+    .toc-list a.active { color:var(--heading); border-left-color:var(--accent); background:#f8fafc; font-weight:600; }
+    main { flex:1; padding:1.2rem clamp(1rem,3vw,2.5rem) 3rem; } .ebook-content { max-width:980px; margin:auto; }
+    .major-section { padding:1rem 0; border-bottom:1px solid var(--line); } .section-alt { background:var(--soft); padding:1.1rem; border-radius:10px; border:1px solid #edf2f7; }
+    .table-scroll { overflow-x:auto; margin:1rem 0; } table { width:100%; border-collapse:collapse; min-width:640px; background:#fff; }
+    th,td { border:1px solid #dbe1e8; padding:.58rem .6rem; vertical-align:top; } th { background:#f8fafc; font-weight:700; }
+    .scorecard-table th::after { content:" ⇅"; color:#94a3b8; font-size:.78em; } .scorecard-table tbody tr:nth-child(even) { background:#fcfdff; }
+    .status-green { background:#e6ffed; } .status-yellow { background:#fffbea; } .status-red { background:#ffe8e8; } .status-gray { background:#f3f4f6; }
+    .warning-marker { color:var(--danger); font-weight:700; font-size:1.12em; } .controversial-heading { border-left:4px solid var(--danger); padding-left:.55rem; }
+    blockquote { margin:1rem 0; border-left:4px solid #cbd5e1; padding:.6rem .85rem; background:#f8fafc; }
+    .archetype-box { display:flex; flex-wrap:wrap; align-items:center; gap:.45rem; margin:.8rem 0 1rem; } .archetype-label { font-weight:700; color:#475569; }
+    .archetype-pill { background:#ebf4ff; border:1px solid #bfdbfe; color:#1e40af; padding:.22rem .55rem; border-radius:999px; font-size:.86rem; }
+    .lesson-box { background:var(--lesson); border-left:4px solid var(--accent); padding:.7rem .8rem; margin:.9rem 0 1.1rem; font-size:.95rem; } .lesson-title { margin:.2rem 0 .45rem; font-weight:700; }
+    .narrative-bridge { background:var(--bridge); border:1px solid #d7e0ea; border-radius:10px; padding:.75rem .9rem; margin:1rem 0; } .narrative-bridge p { font-style:italic; color:#334155; }
+    .timeline-scroll { overflow-x:auto; padding-bottom:.5rem; margin:.9rem 0 1.2rem; } .timeline-track { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(180px,1fr); gap:.65rem; min-width:max-content; }
+    .timeline-col { border:1px solid #dbe4ee; border-radius:10px; background:#fff; padding:.55rem; } .timeline-year { font-weight:700; color:var(--heading); border-bottom:1px solid #e2e8f0; padding-bottom:.35rem; margin-bottom:.45rem; }
+    .timeline-event { font-size:.9rem; padding:.42rem .5rem; border-radius:7px; margin:.36rem 0; border:1px solid transparent; } .timeline-event.positive { background:#ecfdf3; border-color:#b7efcc; } .timeline-event.negative { background:#fff1f1; border-color:#f6c2c2; }
+    .pattern-chain { display:flex; flex-direction:column; gap:.4rem; margin:1rem 0 1.2rem; } .chain-card { border:1px solid #dbe4ee; border-radius:9px; background:#fff; padding:.6rem .7rem; } .chain-arrow { text-align:center; color:#64748b; font-size:1.2rem; }
+    .juxtaposition-wrap { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.8rem; margin:.75rem 0 1rem; } .juxta-card { border-radius:10px; border:1px solid #e2e8f0; padding:.65rem .75rem; }
+    .juxta-card.positive { background:#f0fff4; border-color:#bbf7d0; } .juxta-card.positive h5 { color:#166534; } .juxta-card.negative { background:#fff1f2; border-color:#fecdd3; } .juxta-card.negative h5 { color:#991b1b; }
+    .whatif-card { background:var(--whatif); border-left:4px solid #7c3aed; padding:.65rem .8rem; border-radius:8px; margin:.6rem 0; }
+    .checklist-table tbody tr td:first-child { font-weight:700; text-align:center; width:48px; } .fake-checkbox { display:inline-block; border:1px solid #cbd5e1; border-radius:6px; padding:.14rem .38rem; background:#fff; font-family:ui-monospace,monospace; }
+    .retro-score-table td:nth-child(2) { font-weight:700; text-align:center; } .score-safe { background:#ecfdf3; color:#166534; } .score-low { background:#fffbea; color:#92400e; } .score-mid { background:#fff7ed; color:#9a3412; } .score-high { background:#fee2e2; color:#991b1b; }
+    .back-to-top { position:fixed; right:16px; bottom:18px; border:none; background:var(--heading); color:#fff; width:42px; height:42px; border-radius:999px; cursor:pointer; opacity:0; transform:translateY(8px); transition:.2s; } .back-to-top.show { opacity:1; transform:translateY(0); }
+    /* --- Overlay backdrop --- */
+    .sidebar-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:1050; opacity:0; transition:opacity .24s; }
+    .sidebar-overlay.show { display:block; opacity:1; }
+
+    /* --- Reading progress bar --- */
+    .reading-progress { position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,var(--accent),#f59e0b); z-index:1300; width:0; transition:width .12s linear; }
+
+    /* --- Accordion for mobile profiles --- */
+    .profile-collapse-btn { display:none; }
+
+    /* ===== TABLET: ≤1024px ===== */
+    @media (max-width:1024px) {
+      .sidebar-toggle { display:block; }
+      aside { position:fixed; top:0; left:0; transform:translateX(-105%); transition:.24s; z-index:1100; width:min(82vw,320px); box-shadow:0 10px 30px rgba(2,6,23,.18); }
+      aside.open { transform:translateX(0); }
+      main { padding-top:3.8rem; }
+      .juxtaposition-wrap { grid-template-columns:1fr; }
+      .toc-list a { padding:.4rem .5rem; min-height:36px; display:flex; align-items:center; }
+    }
+
+    /* ===== MOBILE: ≤768px ===== */
+    @media (max-width:768px) {
+      body { font-size:15px; line-height:1.7; -webkit-text-size-adjust:100%; }
+      h1 { font-size:1.6rem; } h2 { font-size:1.35rem; scroll-margin-top:56px; } h3 { font-size:1.15rem; scroll-margin-top:56px; } h4 { font-size:1.05rem; }
+      main { padding:3.2rem .75rem 4rem; }
+      .cover { min-height:80vh; padding:1.5rem 1rem; }
+      .cover h1 { font-size:1.6rem; }
+      .cover .subtitle { font-size:.95rem; }
+
+      /* Tables: scroll hint + shadow */
+      .table-scroll { position:relative; }
+      .table-scroll::after { content:"\2190  geser \2192 "; display:block; text-align:center; font-size:.78rem; color:var(--muted); padding:.3rem 0; }
+      table { min-width:520px; font-size:.85rem; }
+      th,td { padding:.4rem .45rem; }
+
+      /* TOC touch targets */
+      .toc-list a { padding:.5rem .55rem; min-height:44px; font-size:.95rem; border-radius:6px; }
+      .toc-list>li { margin:.12rem 0; }
+
+      /* Sidebar wider on mobile */
+      aside { width:min(88vw,340px); padding:.8rem .6rem; }
+
+      /* Lesson box, bridge, whatif — full width */
+      .lesson-box, .narrative-bridge, .whatif-card { padding:.6rem .65rem; font-size:.9rem; }
+      blockquote { padding:.5rem .65rem; font-size:.93rem; }
+
+      /* Timeline: smaller columns */
+      .timeline-track { grid-auto-columns:minmax(150px,1fr); }
+      .timeline-event { font-size:.82rem; padding:.35rem .4rem; }
+
+      /* Pattern chain */
+      .chain-card { padding:.5rem .55rem; font-size:.9rem; }
+
+      /* Archetype pills */
+      .archetype-pill { font-size:.8rem; padding:.18rem .45rem; }
+
+      /* Back to top: larger touch target */
+      .back-to-top { width:48px; height:48px; font-size:1.2rem; right:12px; bottom:14px; }
+
+      /* Hamburger: larger */
+      .sidebar-toggle { padding:.55rem .75rem; font-size:1.15rem; top:8px; left:8px; }
+
+      /* Profile accordion */
+      .profile-collapse-btn { display:inline-block; background:none; border:1px solid var(--line); border-radius:6px; padding:.3rem .6rem; font-size:.82rem; color:var(--muted); cursor:pointer; margin-left:.5rem; vertical-align:middle; }
+      .profile-body.collapsed { display:none; }
+
+      /* Juxtaposition cards stacked */
+      .juxta-card { padding:.55rem .6rem; font-size:.9rem; }
+
+      /* Checklist table */
+      .checklist-table { min-width:400px; }
+
+      /* Scorecard table */
+      .scorecard-table { min-width:700px; font-size:.8rem; }
+    }
+
+    /* ===== SMALL PHONE: ≤480px ===== */
+    @media (max-width:480px) {
+      body { font-size:14px; }
+      h1 { font-size:1.4rem; } h2 { font-size:1.2rem; } h3 { font-size:1.08rem; }
+      main { padding:3rem .5rem 4rem; }
+      .cover { min-height:70vh; padding:1.2rem .8rem; }
+      .cover h1 { font-size:1.35rem; }
+      .cover .subtitle { font-size:.88rem; }
+      .section-alt { padding:.7rem; border-radius:8px; }
+      .lesson-box, .narrative-bridge, .whatif-card { margin:.6rem -.15rem; border-radius:6px; }
+      table { min-width:440px; font-size:.78rem; }
+      th,td { padding:.32rem .35rem; }
+      .timeline-track { grid-auto-columns:minmax(130px,1fr); gap:.45rem; }
+      .archetype-box { gap:.3rem; }
+      .archetype-pill { font-size:.75rem; }
+      aside { width:min(92vw,300px); }
+      .toc-list a { font-size:.9rem; }
+    }
+
+    /* ===== PRINT ===== */
+    @media print { @page { margin:2cm; } .sidebar-toggle,aside,.back-to-top,.reading-progress,.sidebar-overlay,.profile-collapse-btn { display:none !important; } main { padding:0; } .major-section,.section-alt { break-inside:avoid; page-break-inside:avoid; border:none; background:#fff; } h2 { break-before:page; page-break-before:always; } a { color:#000; text-decoration:none; } .profile-body.collapsed { display:block !important; } }
+  
+.back-home { padding:.8rem 1.5rem .2rem; }
+.back-home a { display:inline-flex; align-items:center; gap:.4rem; color:#4a5568; text-decoration:none; font-size:.9rem; font-weight:500; padding:.4rem .8rem; border-radius:6px; border:1px solid #e2e8f0; background:#fff; transition:all .15s; }
+.back-home a:hover { color:#1a365d; border-color:#1a365d; background:#f7fafc; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+@media(max-width:600px) { .back-home { padding:.6rem 1rem .2rem; } .back-home a { font-size:.82rem; } }
+</style>
+</head>
+<body>
+<header class="cover">
+<div>
+<h1>Market Differentiation &amp; Positioning — Andhya Berna</h1>
+<p class="subtitle">Dokumen Blueprint</p>
+<p class="meta">Regenerasi HTML &#8226; 29 April 2026</p>
+</div>
+</header>
+<div class="reading-progress" id="readingProgress"></div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<button aria-label="Buka/Tutup Daftar Isi" class="sidebar-toggle" id="sidebarToggle" type="button">&#9776;</button>
+<div class="layout">
+<aside id="sidebar"><h2>Daftar Isi</h2><ul class="toc-list">
+<li><a data-target="konteks" href="#konteks">Konteks</a></li>
+<li><a data-target="purple-cow-test" href="#purple-cow-test">Purple Cow Test</a></li>
+<li><a data-target="sva-sustainable-value-advantage" href="#sva-sustainable-value-advantage">SVA — Sustainable Value Advantage</a></li>
+<li><a data-target="positioning-statement" href="#positioning-statement">Positioning Statement</a></li>
+<li><a data-target="positioning-by-exclusion-4-bukan" href="#positioning-by-exclusion-4-bukan">Positioning by Exclusion — 4 BUKAN</a></li>
+<li><a data-target="competitive-differentiation-mapping" href="#competitive-differentiation-mapping">Competitive Differentiation Mapping</a></li>
+<li><a data-target="category-creation-ai-powered-marketing-strategist" href="#category-creation-ai-powered-marketing-strategist">Category Creation — &quot;AI-Powered Marketing Strategist&quot;</a></li>
+<li><a data-target="defensibility-test-moat-andhya-berna" href="#defensibility-test-moat-andhya-berna">Defensibility Test — Moat Andhya Berna</a></li>
+<li><a data-target="3-versi-positioning-statement" href="#3-versi-positioning-statement">3 Versi Positioning Statement</a></li>
+<li><a data-target="tribes-community" href="#tribes-community">Tribes &amp; Community</a></li>
+</ul></aside>
+<main><nav class="back-home"><a href="../index.html">&larr; Back to Home Page</a></nav><article class="ebook-content"><section class="major-section"><h1>Market Differentiation &amp; Positioning — Andhya Berna</h1>
+<blockquote>
+<p>AI-Powered Marketing Strategist | 22 tahun CMO/CTO | Cepat Digital Teknologi, Jogja</p>
+</blockquote>
+<hr/>
+<h2 id="konteks">Konteks</h2>
+<p>Blueprint ini memetakan positioning Andhya Berna sebagai &quot;AI-Powered Marketing Strategist&quot; — kategori baru di Indonesia yang berbeda dari agency, kursus, konsultan tradisional, dan AI tools biasa.</p>
+<hr/>
+<h2 id="purple-cow-test">Purple Cow Test</h2>
+<p><strong>Pertanyaan:</strong> Apa yang benar-benar berbeda dari Andhya vs semua alternatif?</p>
+<div class="table-scroll"><table>
+<thead><tr>
+<th>Dimensi</th>
+<th>Andhya Berna</th>
+<th>Agency DFY</th>
+<th>Kursus Online</th>
+<th>Konsultan Tradisional</th>
+<th>AI Tools Biasa</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Output</td>
+<td>Blueprint siap eksekusi</td>
+<td>Eksekusi langsung</td>
+<td>Curriculum generic</td>
+<td>Rekomendasi verbal</td>
+<td>Output generik</td>
+</tr>
+<tr>
+<td>Customisasi</td>
+<td>100% per klien</td>
+<td>Partial</td>
+<td>Nol</td>
+<td>Partial</td>
+<td>Nol</td>
+</tr>
+<tr>
+<td>Kecepatan</td>
+<td>2-4 minggu</td>
+<td>1-3 bulan</td>
+<td>Self-paced</td>
+<td>4-8 minggu</td>
+<td>Instan tapi generik</td>
+</tr>
+<tr>
+<td>AI leverage</td>
+<td>Ya (amplifier)</td>
+<td>Jarang</td>
+<td>Tidak</td>
+<td>Tidak</td>
+<td>Ya (tapi tanpa expertise)</td>
+</tr>
+<tr>
+<td>Harga</td>
+<td>Rp4.5-35jt</td>
+<td>Rp15-100jt/bulan</td>
+<td>Rp500rb-5jt</td>
+<td>Rp10-50jt</td>
+<td>Rp0-500rb/bulan</td>
+</tr>
+<tr>
+<td>Klien eksekusi</td>
+<td>Ya</td>
+<td>Tidak</td>
+<td>Ya</td>
+<td>Partial</td>
+<td>Ya</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Purple Cow:</strong> Satu-satunya yang gabungkan 22 tahun pengalaman CMO/CTO + AI workflow proprietary + blueprint sebagai deliverable konkret — bukan eksekusi, bukan curriculum, bukan rekomendasi verbal.</p>
+<hr/>
+<h2 id="sva-sustainable-value-advantage">SVA — Sustainable Value Advantage</h2>
+<p><strong>Formula:</strong> AI workflow + 22 tahun pengalaman = Speed with Depth</p>
+<ul>
+<li><strong>Speed:</strong> Blueprint 2-4 minggu vs konsultan tradisional 4-8 minggu (3-5x lebih cepat)</li>
+<li><strong>Depth:</strong> 22 tahun pengalaman CMO/CTO — tidak bisa ditiru oleh AI tools biasa atau praktisi baru</li>
+<li><strong>Defensibility:</strong> Kombinasi ini tidak bisa di-copy dalam waktu singkat</li>
+</ul>
+<hr/>
+<h2 id="positioning-statement">Positioning Statement</h2>
+<p><strong>Formula:</strong> Untuk [siapa] yang [masalah], [nama] adalah [kategori] yang [benefit unik], tidak seperti [alternatif].</p>
+<blockquote>
+<p>&quot;Untuk solo founder &amp; SMB Indonesia yang membakar budget marketing tanpa sistem yang jelas, Andhya Berna adalah AI-Powered Marketing Strategist yang deliver marketing blueprint end-to-end dalam 2-4 minggu — tidak seperti agency yang eksekusi tanpa blueprint, atau kursus yang kasih curriculum generic tanpa customisasi.&quot;</p>
+</blockquote>
+<hr/>
+<h2 id="positioning-by-exclusion-4-bukan">Positioning by Exclusion — 4 BUKAN</h2>
+<p>Ini justru memperkuat positioning, bukan melemahkan:</p>
+<div class="table-scroll"><table>
+<thead><tr>
+<th>BUKAN</th>
+<th>Kenapa Ini Kekuatan</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>BUKAN agency DFY</td>
+<td>Klien yang eksekusi = klien yang ownership. Blueprint lebih sustainable dari eksekusi yang berhenti kalau agency berhenti.</td>
+</tr>
+<tr>
+<td>BUKAN kursus online</td>
+<td>Output custom per klien = nilai lebih tinggi. Kursus generic tidak bisa diagnose kondisi spesifik bisnis Anda.</td>
+</tr>
+<tr>
+<td>BUKAN AI productivity educator</td>
+<td>Fokus marketing-specific = expertise yang lebih dalam. Bukan generalist AI tools tutorial.</td>
+</tr>
+<tr>
+<td>BUKAN motivator/influencer</td>
+<td>Advisor di balik layar = lebih dipercaya untuk keputusan bisnis serius.</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="competitive-differentiation-mapping">Competitive Differentiation Mapping</h2>
+<p><strong>Positioning sweet spot:</strong> Lebih murah dari agency, lebih custom dari kursus, lebih cepat dari konsultan tradisional, lebih expert dari AI tools biasa.</p>
+<pre><code>
+                    CUSTOM
+                      ↑
+         Andhya Berna ●
+                      |
+MURAH ←───────────────┼───────────────→ MAHAL
+                      |
+         Kursus ●     |     ● Agency
+                      ↓
+                   GENERIC
+</code></pre>
+<hr/>
+<h2 id="category-creation-ai-powered-marketing-strategist">Category Creation — &quot;AI-Powered Marketing Strategist&quot;</h2>
+<p>Ini bukan &quot;konsultan marketing yang pakai AI&quot; — ini kategori baru:</p>
+<p><strong>Definisi kategori:</strong></p>
+<ul>
+<li>Deliver blueprint (bukan eksekusi, bukan curriculum)</li>
+<li>AI sebagai amplifier dari expertise manusia (bukan substitut)</li>
+<li>Speed advantage yang terukur (2-4 minggu vs 4-8 minggu)</li>
+<li>Diagnosis-first methodology (bukan langsung prescribe)</li>
+</ul>
+<p><strong>Cara own kategori ini:</strong></p>
+<ul>
+<li>Selalu sebut &quot;AI-Powered Marketing Strategist&quot; di bio, bukan &quot;konsultan marketing&quot;</li>
+<li>Edukasi pasar tentang perbedaan blueprint vs eksekusi vs curriculum</li>
+<li>Tunjukkan AI workflow sebagai differentiator, bukan gimmick</li>
+</ul>
+<hr/>
+<h2 id="defensibility-test-moat-andhya-berna">Defensibility Test — Moat Andhya Berna</h2>
+<div class="table-scroll"><table>
+<thead><tr>
+<th>Moat</th>
+<th>Kekuatan</th>
+<th>Bisa Ditiru?</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>22 tahun pengalaman CMO/CTO</td>
+<td>Sangat tinggi</td>
+<td>Tidak (butuh 22 tahun)</td>
+</tr>
+<tr>
+<td>AI workflow proprietary (CLARK)</td>
+<td>Tinggi</td>
+<td>Partial (bisa di-copy tapi tidak ada expertise-nya)</td>
+</tr>
+<tr>
+<td>Blueprint methodology</td>
+<td>Tinggi</td>
+<td>Partial (bisa di-copy tapi tidak ada case studies-nya)</td>
+</tr>
+<tr>
+<td>Case studies nyata (Umrah Family, dll)</td>
+<td>Tinggi</td>
+<td>Tidak (case studies milik Andhya)</td>
+</tr>
+<tr>
+<td>Top 100 Seller Scalev 2025</td>
+<td>Medium</td>
+<td>Tidak (credential spesifik)</td>
+</tr>
+</tbody>
+</table></div>
+<hr/>
+<h2 id="3-versi-positioning-statement">3 Versi Positioning Statement</h2>
+<h3 id="bio-threads-maks-150-karakter">Bio Threads (maks 150 karakter)</h3>
+<blockquote>
+<p>&quot;AI-Powered Marketing Strategist. 22 tahun CMO/CTO. Bantu solo founder &amp; SMB Indonesia bangun marketing blueprint end-to-end.&quot;</p>
+</blockquote>
+<h3 id="website-headline">Website Headline</h3>
+<blockquote>
+<p>&quot;Marketing Blueprint End-to-End dalam 2-4 Minggu — Bukan Agency, Bukan Kursus. Diagnosis Dulu, Blueprint Kemudian.&quot;</p>
+</blockquote>
+<h3 id="pitch-deck-1-kalimat">Pitch Deck (1 kalimat)</h3>
+<blockquote>
+<p>&quot;Andhya Berna adalah AI-Powered Marketing Strategist yang deliver marketing blueprint comprehensive untuk solo founder &amp; SMB Indonesia — 3-5x lebih cepat dari konsultan tradisional, dengan kualitas insight dari 22 tahun pengalaman CMO/CTO.&quot;</p>
+</blockquote>
+<hr/>
+<h2 id="tribes-community">Tribes &amp; Community</h2>
+<p><strong>Tribe:</strong> Solo founder &amp; SMB Indonesia yang percaya pada sistem, bukan tebak-tebakan.</p>
+<p><strong>Bahasa tribe:</strong></p>
+<ul>
+<li>&quot;Boncos&quot; (bukan &quot;iklan tidak efektif&quot;)</li>
+<li>&quot;Leaky bucket&quot; (bukan &quot;funnel bermasalah&quot;)</li>
+<li>&quot;Blueprint&quot; (bukan &quot;strategi&quot; atau &quot;rencana&quot;)</li>
+<li>&quot;Diagnosis&quot; (bukan &quot;analisis&quot;)</li>
+<li>&quot;Siap eksekusi&quot; (bukan &quot;actionable&quot;)</li>
+</ul>
+<p>Pakai bahasa ini konsisten di semua channel — Threads, email, Meta Ads, discovery call.</p></section></article></main>
+</div>
+<button aria-label="Kembali ke atas" class="back-to-top" id="backToTop" type="button">&#8593;</button>
+<script>
+    (function () {
+      'use strict';
+      var sidebar = document.getElementById('sidebar');
+      var overlay = document.getElementById('sidebarOverlay');
+      var toggle = document.getElementById('sidebarToggle');
+      var backBtn = document.getElementById('backToTop');
+      var progressBar = document.getElementById('readingProgress');
+      var tocLinks = Array.from(document.querySelectorAll('.toc-list a'));
+      var sections = tocLinks
+        .map(function (a) { return document.getElementById(a.dataset.target); })
+        .filter(Boolean);
+
+      /* --- Sidebar open/close with overlay --- */
+      function openSidebar() {
+        sidebar.classList.add('open');
+        overlay.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeSidebar() {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          if (sidebar.classList.contains('open')) { closeSidebar(); }
+          else { openSidebar(); }
+        });
+      }
+      if (overlay) {
+        overlay.addEventListener('click', closeSidebar);
+      }
+
+      /* --- Swipe to close sidebar --- */
+      var touchStartX = 0;
+      var touchStartY = 0;
+      sidebar.addEventListener('touchstart', function (e) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+      sidebar.addEventListener('touchend', function (e) {
+        var dx = e.changedTouches[0].clientX - touchStartX;
+        var dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
+        if (dx < -60 && dy < 80) { closeSidebar(); }
+      }, { passive: true });
+
+      /* --- TOC link click closes sidebar on mobile --- */
+      tocLinks.forEach(function (a) {
+        a.addEventListener('click', function () {
+          if (window.innerWidth <= 1024) { closeSidebar(); }
+        });
+      });
+
+      /* --- Scroll spy --- */
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var id = entry.target.id;
+            tocLinks.forEach(function (link) {
+              if (link.dataset.target === id) {
+                link.classList.add('active');
+                /* Auto-scroll TOC to active item on desktop */
+                if (window.innerWidth > 1024 && sidebar.scrollHeight > sidebar.clientHeight) {
+                  link.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+                }
+              } else {
+                link.classList.remove('active');
+              }
+            });
+          });
+        },
+        { rootMargin: '-30% 0px -55% 0px', threshold: 0.1 }
+      );
+      sections.forEach(function (sec) { observer.observe(sec); });
+
+      /* --- Reading progress bar + back-to-top --- */
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          window.requestAnimationFrame(function () {
+            var scrollTop = window.scrollY || document.documentElement.scrollTop;
+            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            if (docHeight > 0) {
+              progressBar.style.width = Math.min((scrollTop / docHeight) * 100, 100) + '%';
+            }
+            if (scrollTop > 400) { backBtn.classList.add('show'); }
+            else { backBtn.classList.remove('show'); }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+
+      backBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      /* --- Profile accordion on mobile --- */
+      function initAccordion() {
+        var isMobile = window.innerWidth <= 768;
+        var profiles = document.querySelectorAll('h3[id]');
+        profiles.forEach(function (h3) {
+          /* Only profile headings (G0-x, numbered, S-x, T-x) */
+          var text = h3.textContent || '';
+          if (!/^(G0-|[0-9]+\.|S[0-9]|T-[0-9])/.test(text.trim())) return;
+
+          var existingBtn = h3.querySelector('.profile-collapse-btn');
+          if (!existingBtn) {
+            var btn = document.createElement('button');
+            btn.className = 'profile-collapse-btn';
+            btn.textContent = '▼';
+            btn.setAttribute('aria-label', 'Buka/tutup profil');
+            h3.appendChild(btn);
+          }
+
+          var btn = h3.querySelector('.profile-collapse-btn');
+          /* Collect siblings until next h3 or h2 */
+          var body = h3.nextElementSibling;
+          if (body && body.classList.contains('profile-body')) {
+            /* Already wrapped */
+            if (isMobile && !body.classList.contains('collapsed')) {
+              body.classList.add('collapsed');
+              btn.textContent = '▶';
+            } else if (!isMobile) {
+              body.classList.remove('collapsed');
+              btn.textContent = '▼';
+            }
+            return;
+          }
+
+          /* Wrap profile content in a div */
+          var wrapper = document.createElement('div');
+          wrapper.className = 'profile-body';
+          var sibling = h3.nextElementSibling;
+          while (sibling && sibling.tagName !== 'H3' && sibling.tagName !== 'H2') {
+            var next = sibling.nextElementSibling;
+            wrapper.appendChild(sibling);
+            sibling = next;
+          }
+          h3.parentNode.insertBefore(wrapper, sibling);
+
+          if (isMobile) {
+            wrapper.classList.add('collapsed');
+            btn.textContent = '▶';
+          }
+        });
+      }
+
+      /* Toggle accordion on click */
+      document.addEventListener('click', function (e) {
+        if (!e.target.classList.contains('profile-collapse-btn')) return;
+        var h3 = e.target.closest('h3');
+        if (!h3) return;
+        var body = h3.nextElementSibling;
+        if (body && body.classList.contains('profile-body')) {
+          body.classList.toggle('collapsed');
+          e.target.textContent = body.classList.contains('collapsed') ? '▶' : '▼';
+        }
+      });
+
+      /* Init accordion on load and resize */
+      initAccordion();
+      var resizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(initAccordion, 250);
+      });
+
+      /* --- Keyboard: Escape closes sidebar --- */
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+          closeSidebar();
+        }
+      });
+    })();
+    
+</script>
+</body>
+</html>
